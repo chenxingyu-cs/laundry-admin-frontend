@@ -36,7 +36,7 @@ export default {
     "@primary-color": "#f45675",
     "@link-color": "#f45675",
     "@border-radius-base": "2px",
-    "@font-size-base": "50px",
+    "@font-size-base": "32px",
     "@line-height-base": "1.2"
   }
 }
