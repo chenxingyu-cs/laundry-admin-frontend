@@ -1,5 +1,5 @@
 import { NavBar } from 'antd-mobile';
-import { Link } from 'dva/router';
+import { Link, browserHistory } from 'dva/router';
 import React from 'react';
 import styles from './Header.css';
 
@@ -20,7 +20,7 @@ function Header({ mainTitle, rightTitle, rightDestination }) {
 
   return (
     <NavBar
-      leftContent="" mode="light" onLeftClick={() => console.log('onLeftClick')}
+      leftContent="" mode="light" onLeftClick={() => browserHistory.goBack()}
       rightContent={rightContentComponent}
     >
       {mainTitleText}
