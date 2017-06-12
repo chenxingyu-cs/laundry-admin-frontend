@@ -6,7 +6,7 @@ import FranchiseeListPanel from '../../components/Franchisee/FranchiseeListPanel
 
 function FranchiseeList({ list }) {
   return (
-    <MainLayout mainTitle="加盟商管理" rightTitle="添加">
+    <MainLayout mainTitle="加盟商管理" rightTitle="添加" rightUrl="/admin/franchisee/new">
       <div className={styles.normal}>
         <FranchiseeListPanel franchiseesListInfo={list} />
       </div>
