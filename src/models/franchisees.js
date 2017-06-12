@@ -17,6 +17,11 @@ export default {
       const { data } = yield call(franchiseeService.fetchAllFranchises);
       yield put({ type: 'save', payload: { data } });
     },
+
+    *create({ payload: { name, phone } }, { call }) {
+      yield call(franchiseeService.createFranchisee, name, phone);
+      // yield put({ type: 'reload' });
+    },
   },
 
   subscriptions: {
