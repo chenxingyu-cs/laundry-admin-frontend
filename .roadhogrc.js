@@ -38,6 +38,7 @@ export default {
     "@border-radius-base": "2px",
     "@font-size-base": "32px",
     "@font-size-heading": "28px",
+    "@font-size-caption": "28px",
     "@line-height-base": "1.2"
   }
 }
