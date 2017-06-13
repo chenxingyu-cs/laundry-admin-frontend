@@ -10,7 +10,7 @@ function FranchiseeListCard({ franchiseesListInfo }) {
   return (
     <div className={styles.normal}>
       <List>
-        <Item extra="联系电话----">加盟商名称</Item>
+        <Item extra="联系电话-----">加盟商名称</Item>
         {franchiseesListInfo.map(franchiseeInfo => (
           <Item
             extra={franchiseeInfo.phone}
