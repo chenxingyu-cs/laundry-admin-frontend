@@ -18,7 +18,7 @@ function RouterConfig({ history }) {
         <Route path="franchisee" component={FranchiseeApp}>
           <Route path="list" component={FranchiseeList} />
           <Route path="new" component={FranchiseeNew} />
-          <Route path="edit" component={FranchiseeEdit} />
+          <Route path="edit/:franchiseeId" component={FranchiseeEdit} />
           <Route path="info/:franchiseeId" component={FranchiseeInfo} />
         </Route>
       </Route>

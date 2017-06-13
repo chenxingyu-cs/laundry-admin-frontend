@@ -35,6 +35,8 @@ export default {
     "@brand-primary": "#f45675",
     "@primary-color": "#f45675",
     "@link-color": "#f45675",
+    "@primary-button-fill-tap": "#f45675",
+    "fill-tap": "#f45675",
     "@border-radius-base": "2px",
     "@font-size-base": "32px",
     "@font-size-heading": "28px",
