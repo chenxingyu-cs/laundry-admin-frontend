@@ -1,5 +1,6 @@
 import React from 'react';
 import { List } from 'antd-mobile';
+import { browserHistory } from 'dva/router';
 import styles from './FranchiseeListCard.css';
 
 const Item = List.Item;
@@ -15,7 +16,7 @@ function FranchiseeListCard({ franchiseesListInfo }) {
             extra={franchiseeInfo.phone}
             arrow="horizontal"
             key={franchiseeInfo.id}
-            onClick={() => {}}
+            onClick={() => browserHistory.push(`/admin/franchisee/info/${franchiseeInfo.id}`)}
           >
             {franchiseeInfo.name}
           </Item>
