@@ -1,3 +1,19 @@
-
 .normal {
+
+}
+
+.header {
+  font-size: 24px;
+  color: #888;
+  text-align: inherit;
+}
+
+.headerPhoneNumber {
+  font-size: 24px;
+  color: #888;
+  text-align: center;
+}
+
+.phoneWrapper {
+  color: #000;
 }
