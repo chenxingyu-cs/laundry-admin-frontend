@@ -1,3 +1,5 @@
+import { browserHistory } from 'dva/router';
+import { Toast } from 'antd-mobile';
 import * as franchiseeService from '../services/franchisee';
 
 export default {
@@ -19,7 +21,13 @@ export default {
     },
 
     *create({ payload: { name, phone } }, { call }) {
-      yield call(franchiseeService.createFranchisee, name, phone);
+      const { data } = yield call(franchiseeService.createFranchisee, name, phone);
+      if (data.status === 'OK') {
+        Toast.success('新建成功！', 1);
+        browserHistory.push('/admin/franchisee/list');
+      } else {
+        Toast.fail('新建失败，请重试！', 1);
+      }
       // yield put({ type: 'reload' });
     },
   },
