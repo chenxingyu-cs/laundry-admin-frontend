@@ -12,6 +12,12 @@ export default {
       const result = { list: data };
       return { ...state, ...result };
     },
+
+    filter(state, { payload: { keyword } }) {
+      const filteredList = state.list.filter(item => item.name.includes(keyword));
+      const result = { list: filteredList };
+      return { ...state, ...result };
+    },
   },
 
   effects: {
