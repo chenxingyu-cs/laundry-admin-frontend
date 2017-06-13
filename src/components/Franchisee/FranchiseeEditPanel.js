@@ -74,6 +74,7 @@ function BasicInput({ form, dispatch, info }) {
             onErrorClick={() => {
               Toast.fail(getFieldError('phone').join('、'), 1);
             }}
+            type="number"
           >
             加盟商电话
           </InputItem>

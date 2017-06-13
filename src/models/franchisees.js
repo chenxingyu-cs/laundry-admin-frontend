@@ -40,6 +40,16 @@ export default {
         Toast.fail('编辑失败，请重试！', 1);
       }
     },
+
+    *remove({ payload: { id } }, { call }) {
+      const { data } = yield call(franchiseeService.remove, id);
+      if (data.status === 'OK') {
+        Toast.success('删除成功！', 1);
+        browserHistory.push('/admin/franchisee/list');
+      } else {
+        Toast.fail('删除失败，请重试！', 1);
+      }
+    },
   },
 
   subscriptions: {

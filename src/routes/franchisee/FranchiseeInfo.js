@@ -4,12 +4,12 @@ import styles from './FranchiseeInfo.css';
 import MainLayout from '../../components/MainLayout/MainLayout';
 import FranchiseeInfoPanel from '../../components/Franchisee/FranchiseeInfoPanel';
 
-function FranchiseeInfo({ params, list }) {
+function FranchiseeInfo({ params, list, dispatch }) {
   const franchiseeInfo = list.find(item => item.id === parseInt(params.franchiseeId, 10));
   return (
     <MainLayout mainTitle="加盟商信息">
       <div className={styles.normal}>
-        <FranchiseeInfoPanel info={franchiseeInfo} />
+        <FranchiseeInfoPanel info={franchiseeInfo} dispatch={dispatch} />
       </div>
     </MainLayout>
   );

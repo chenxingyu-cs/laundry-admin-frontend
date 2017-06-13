@@ -30,7 +30,7 @@ class BasicInput extends React.Component {
   }
 
   validatePhone = (rule, value, callback) => {
-    if (value && value.length > 12) {
+    if (value && value.length === 11) {
       callback();
     } else {
       callback(new Error('请输入11位有效电话'));
@@ -74,7 +74,7 @@ class BasicInput extends React.Component {
                 Toast.fail(getFieldError('phone').join('、'), 1);
               }}
               placeholder="请输入加盟商电话"
-              type="phone"
+              type="number"
             >
               加盟商电话
             </InputItem>
