@@ -11,8 +11,9 @@ function BasicInput({ form, dispatch, info }) {
       if (!error) {
         const values = form.getFieldsValue();
         dispatch({
-          type: 'franchisees/create',
+          type: 'franchisees/edit',
           payload: {
+            id: info.id,
             name: values.name,
             phone: values.phone,
           },
@@ -32,7 +33,7 @@ function BasicInput({ form, dispatch, info }) {
   }
 
   function validatePhone(rule, value, callback) {
-    if (value && value.length > 12) {
+    if (value && value.length >= 11) {
       callback();
     } else {
       callback(new Error('请输入11位有效电话'));
@@ -73,7 +74,6 @@ function BasicInput({ form, dispatch, info }) {
             onErrorClick={() => {
               Toast.fail(getFieldError('phone').join('、'), 1);
             }}
-            type="phone"
           >
             加盟商电话
           </InputItem>

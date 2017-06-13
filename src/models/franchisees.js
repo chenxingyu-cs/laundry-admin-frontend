@@ -30,6 +30,16 @@ export default {
       }
       // yield put({ type: 'reload' });
     },
+
+    *edit({ payload: { id, name, phone } }, { call }) {
+      const { data } = yield call(franchiseeService.edit, id, name, phone);
+      if (data.status === 'OK') {
+        Toast.success('编辑成功！', 1);
+        browserHistory.push('/admin/franchisee/list');
+      } else {
+        Toast.fail('编辑失败，请重试！', 1);
+      }
+    },
   },
 
   subscriptions: {
