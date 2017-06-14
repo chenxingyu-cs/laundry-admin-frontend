@@ -6,7 +6,7 @@ const svgSpriteDirs = [
 ];
 
 export default {
-  entry: 'src/index.js',
+  entry: 'src/admin.js',
   extraBabelPlugins: [
     'transform-runtime',
     ['import', { libraryName: 'antd-mobile', style: true }],

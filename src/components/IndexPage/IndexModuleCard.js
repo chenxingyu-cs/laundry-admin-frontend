@@ -37,7 +37,7 @@ function IndexModuleCard({ cardInfo }) {
   return (
     <div className={styles.normal}>
       <div className={styles.cardTitle}>
-        {cardTitle}
+        <img className={styles.blueBar} role="presentation" src="http://res.cloudinary.com/xnchen/image/upload/v1497423057/titleHint2_jyeogk.png" />{cardTitle}
       </div>
       <div className={styles.cardItems}>
         {itemListComponent}
