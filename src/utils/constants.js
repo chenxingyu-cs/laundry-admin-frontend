@@ -73,7 +73,7 @@ export const INDEX_OPERATION_CARD_INFO = {
       id: 10,
       itemTitle: '交易查询',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497155974/yunying2_mwt2ly.png',
-      url: '#',
+      url: '/admin/order/query',
     },
   ],
 };
