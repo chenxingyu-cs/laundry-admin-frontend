@@ -2,6 +2,7 @@ import { connect } from 'dva';
 import { List } from 'antd-mobile';
 import React from 'react';
 import styles from './OrderQueryResult.css';
+import OrderQueryCard from './OrderQueryCard';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -9,32 +10,12 @@ const Brief = Item.Brief;
 function OrderQueryResult({ ongoing, finished }) {
   return (
     <div className={styles.normal}>
-      <List>
-        {ongoing.map(order =>
-          <Item
-            arrow="horizontal"
-            multipleLine
-            key= {order.orderId}
-          >
-            {order.address} | {order.machineName} | {order.functionName}
-            <Brief>
-              完成时间: {order.finishTimestamp}
-            </Brief>
-          </Item>,
-        )}
-        {finished.map(order =>
-          <Item
-            arrow="horizontal"
-            multipleLine
-            key= {order.orderId}
-          >
-            {order.address} | {order.machineName} | {order.functionName}
-            <Brief>
-              完成时间: {order.finishTimestamp}
-            </Brief>
-          </Item>,
-        )}
-      </List>
+      {ongoing.map(order =>
+        <OrderQueryCard order={order} key={order.orderId} />
+      )}
+      {finished.map(order =>
+        <OrderQueryCard order={order} key={order.orderId} />
+      )}
     </div>
   );
 }
