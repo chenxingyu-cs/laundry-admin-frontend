@@ -11,7 +11,11 @@ function OrderQueryResult({ ongoing, finished }) {
     <div className={styles.normal}>
       <List>
         {ongoing.map(order =>
-          <Item arrow="horizontal" multipleLine>
+          <Item
+            arrow="horizontal"
+            multipleLine
+            key= {order.orderId}
+          >
             {order.address} | {order.machineName} | {order.functionName}
             <Brief>
               完成时间: {order.finishTimestamp}
@@ -19,7 +23,11 @@ function OrderQueryResult({ ongoing, finished }) {
           </Item>,
         )}
         {finished.map(order =>
-          <Item arrow="horizontal" multipleLine>
+          <Item
+            arrow="horizontal"
+            multipleLine
+            key= {order.orderId}
+          >
             {order.address} | {order.machineName} | {order.functionName}
             <Brief>
               完成时间: {order.finishTimestamp}
