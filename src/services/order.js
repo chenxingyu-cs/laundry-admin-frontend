@@ -1,7 +1,7 @@
 import request from '../utils/request';
 import { HOST_URL } from '../utils/constants';
 
-export function query({ queryData }) {
+export function query(queryData) {
   const formData = new FormData();     // eslint-disable-line
   formData.append('date', queryData.date);
   formData.append('orderId', queryData.orderId);
