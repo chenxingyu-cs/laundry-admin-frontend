@@ -17,6 +17,8 @@ app.model(require('./models/franchisees'));
 
 app.model(require('./models/orders'));
 
+app.model(require('./models/adminUsers'));
+
 // 4. Router
 app.router(require('./router'));
 

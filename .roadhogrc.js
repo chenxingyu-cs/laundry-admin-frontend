@@ -41,6 +41,7 @@ export default {
     "@font-size-base": "32px",
     "@font-size-heading": "28px",
     "@font-size-caption": "28px",
+    "@font-size-subhead": "24px",
     "@line-height-base": "1.2"
   }
 }
