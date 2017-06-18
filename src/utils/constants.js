@@ -1,4 +1,4 @@
-export const HOST_URL = 'http://wxgzhpaytest.maxtropy.com/api';
+export const HOST_URL = 'http://wxgzhpaytest.maxtropy.com/admin';
 
 export const INDEX_MANAGE_CARD_INFO = {
   cardTitle: '管理',

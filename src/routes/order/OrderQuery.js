@@ -11,7 +11,7 @@ class OrderQueryExample extends React.Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
       this.props.dispatch({
-        type: 'orders/querySuccess',
+        type: 'orders/fetch',
         payload: { queryData: value },
       });
     });
