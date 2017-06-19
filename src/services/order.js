@@ -2,7 +2,6 @@ import request from '../utils/request';
 import { HOST_URL } from '../utils/constants';
 
 export function query(queryData) {
-  const formData = new FormData();     // eslint-disable-line
   const date = typeof (queryData.date) === 'undefined' ? '' : queryData.date;
   const orderId = typeof (queryData.orderId) === 'undefined' ? '' : queryData.orderId;
   return request(`${HOST_URL}/order/query?date=${date}&orderId=${orderId}`);

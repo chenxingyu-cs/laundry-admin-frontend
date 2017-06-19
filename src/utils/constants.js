@@ -49,7 +49,7 @@ export const INDEX_MACHINE_CARD_INFO = {
       id: 7,
       itemTitle: '设备启用',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497209107/machine2_auzmf3.png',
-      url: '#',
+      url: '/admin/device/list',
     },
     {
       id: 8,

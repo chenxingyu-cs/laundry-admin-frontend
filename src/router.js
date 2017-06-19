@@ -15,6 +15,9 @@ import UserList from './routes/users/UserList.js';
 import OrderQuery from './routes/order/OrderQuery.js';
 import OrderApp from './routes/order/OrderApp.js';
 
+import DeviceList from './routes/device/DeviceList.js';
+import DeviceApp from './routes/device/DeviceApp.js';
+
 
 function RouterConfig({ history }) {
   return (
@@ -37,6 +40,10 @@ function RouterConfig({ history }) {
 
         <Route path="order" component={OrderApp}>
           <Route path="query" component={OrderQuery} />
+        </Route>
+
+        <Route path="device" component={DeviceApp}>
+          <Route path="list" component={DeviceList} />
         </Route>
       </Route>
     </Router>

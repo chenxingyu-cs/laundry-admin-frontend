@@ -1,3 +1,20 @@
 
 .normal {
 }
+
+.bar {
+  display: inline-block;
+  width: 92%;
+}
+
+.badge {
+  margin-right: 1%;
+  display: inline-block;
+  width: 7%;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0.3;
+}
