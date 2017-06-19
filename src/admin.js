@@ -15,6 +15,8 @@ app.model(require('./models/example'));
 
 app.model(require('./models/franchisees'));
 
+app.model(require('./models/stations'));
+
 app.model(require('./models/orders'));
 
 app.model(require('./models/devices'));
