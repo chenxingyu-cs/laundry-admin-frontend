@@ -31,7 +31,7 @@ export const INDEX_MANAGE_CARD_INFO = {
       id: 5,
       itemTitle: '人员管理',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497209107/manage5_gomozc.png',
-      url: '#',
+      url: '/admin/users/list',
     },
   ],
 };

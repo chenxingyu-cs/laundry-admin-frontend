@@ -11,6 +11,8 @@ import FranchiseeInfo from './routes/franchisee/FranchiseeInfo.js';
 import UserNew from './routes/users/UserNew.js';
 import UserApp from './routes/users/UserApp.js';
 import UserList from './routes/users/UserList.js';
+import UserInfo from './routes/users/UserInfo.js';
+import UserEdit from './routes/users/UserEdit.js';
 
 import OrderQuery from './routes/order/OrderQuery.js';
 import OrderApp from './routes/order/OrderApp.js';
@@ -36,6 +38,8 @@ function RouterConfig({ history }) {
         <Route path="users" component={UserApp}>
           <Route path="list" component={UserList} />
           <Route path="new" component={UserNew} />
+          <Route path="info/:userId" component={UserInfo} />
+          <Route path="edit/:userId" component={UserEdit} />
         </Route>
 
         <Route path="order" component={OrderApp}>

@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './UserNew.css';
 import MainLayout from '../../components/MainLayout/MainLayout';
-import UserNewPanel from '../../components/Users/UserNewPanel';
+import UserEditPanel from '../../components/Users/UserEditPanel';
 
 function UserNew({ dispatch, franchiseeList }) {
   return (
     <MainLayout mainTitle="新建人员">
       <div className={styles.normal}>
-        <UserNewPanel dispatch={dispatch} franchiseeList={franchiseeList} />
+        <UserEditPanel dispatch={dispatch} franchiseeList={franchiseeList} />
       </div>
     </MainLayout>
   );

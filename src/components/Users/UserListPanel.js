@@ -1,19 +1,24 @@
 import React from 'react';
 import { SearchBar, Button, WhiteSpace } from 'antd-mobile';
 import styles from './UserListPanel.css';
+import UserListCard from './UserListCard';
 
 class UserListPanel extends React.Component {
   state = {
     value: '',
+    filteredList: this.props.list,
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredList: nextProps.list,
+    });
+  }
+
   onSearch = (keyword) => {
-    // this.props.dispatch({
-    //   type: 'franchisees/filter',
-    //   payload: {
-    //     keyword,
-    //   },
-    // });
+    this.setState({
+      filteredList: this.props.list.filter(item => item.name.includes(keyword)),
+    });
     console.log(keyword);
   }
 
@@ -28,6 +33,7 @@ class UserListPanel extends React.Component {
   };
 
   onClickSubmitButton = () => {
+    console.log('comp', this.props.list);
     console.log(this.state.value, 'buttonSubmit');
     this.onSearch(this.state.value);
   }
@@ -53,6 +59,9 @@ class UserListPanel extends React.Component {
         </div>
 
         <WhiteSpace />
+        <div>
+          <UserListCard infoList={this.state.filteredList} />
+        </div>
       </div>
     );
   }

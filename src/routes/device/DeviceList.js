@@ -5,12 +5,12 @@ import MainLayout from '../../components/MainLayout/MainLayout';
 import DeviceListPanel from '../../components/Device/DeviceListPanel';
 import DeviceSearchPanel from '../../components/Device/DeviceSearchPanel';
 
-function DeviceList({ available, using, dispatch }) {
+function DeviceList() {
   return (
     <MainLayout mainTitle="设备启用">
       <div className={styles.normal}>
-      	<DeviceSearchPanel />
-      	<DeviceListPanel />
+        <DeviceSearchPanel />
+        <DeviceListPanel />
       </div>
     </MainLayout>
   );
