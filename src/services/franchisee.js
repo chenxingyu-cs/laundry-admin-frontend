@@ -18,16 +18,17 @@ export function createFranchisee(name, phone, desc = '') {
 
 export function edit(id, name, phone, desc = '') {
   const formData = new FormData();     // eslint-disable-line
-  formData.append('id', id);
   formData.append('name', name);
   formData.append('phone', phone);
   formData.append('desc', desc);
-  return request(`${HOST_URL}/franchisee/update`, {
-    method: 'POST',
+  return request(`${HOST_URL}/franchisee/${id}`, {
+    method: 'PUT',
     body: formData,
   });
 }
 
 export function remove(id) {
-  return request(`${HOST_URL}/franchisee/delete?id=${id}`);
+  return request(`${HOST_URL}/franchisee/${id}`, {
+    method: 'DELETE',
+  });
 }

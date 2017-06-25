@@ -61,8 +61,7 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/admin/franchisee/list'
-         || pathname === '/admin/users/new') {
+        if (pathname === '/admin/franchisee/list') {
           dispatch({ type: 'fetch', payload: query });
         }
       });
