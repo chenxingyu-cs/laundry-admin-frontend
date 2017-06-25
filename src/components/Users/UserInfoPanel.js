@@ -2,11 +2,12 @@ import React from 'react';
 import { List, Button, WhiteSpace, Modal } from 'antd-mobile';
 import { browserHistory } from 'dva/router';
 import styles from './UserInfoPanel.css';
+import { fromAuthorityLevel } from '../../utils/roleFormatter';
 
 const Item = List.Item;
 const alert = Modal.alert;
 
-function UserInfoPanel({ info }) {
+function UserInfoPanel({ info, dispatch }) {
   const showAlert = () => {
     const alertInstance = alert('删除', '确定删除么???', [
       { text: '取消', onPress: () => console.log('cancel'), style: 'default' },    // eslint-disable-line
@@ -20,20 +21,20 @@ function UserInfoPanel({ info }) {
 
   const onDelete = () => {
     console.log(info.id, 'to be deleted');
-    // dispatch({
-    //   type: 'franchisees/remove',
-    //   payload: {
-    //     id: info.id,
-    //   },
-    // });
+    dispatch({
+      type: 'adminUsers/remove',
+      payload: {
+        id: info.id,
+      },
+    });
   };
 
   return (
     <div className={styles.normal}>
       <List>
         <Item extra={info.name}>姓名</Item>
-        <Item extra={info.phone}>电话</Item>
-        <Item extra={info.character}>角色</Item>
+        <Item extra={info.mobile}>电话</Item>
+        <Item extra={fromAuthorityLevel(info.authorityLevel)}>角色</Item>
       </List>
 
       <WhiteSpace />
