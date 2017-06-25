@@ -1,6 +1,6 @@
 import { browserHistory } from 'dva/router';
 import { Toast } from 'antd-mobile';
-import pathToRegexp from 'path-to-regexp';
+// import pathToRegexp from 'path-to-regexp';
 import * as deviceService from '../services/device';
 
 export default {
@@ -32,7 +32,7 @@ export default {
       } else if (data.responseEntity.status === '空闲') {
         browserHistory.push(`/admin/device/detail/${boxId}`);
       } else if (data.responseEntity.status === '使用中') {
-        alert('使用中');
+        alert('使用中');   // eslint-disable-line
       }
     },
     *fetchAll({ payload: { page = 1 } }, { call, put }) {
