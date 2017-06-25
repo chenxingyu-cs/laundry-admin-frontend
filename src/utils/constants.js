@@ -17,9 +17,9 @@ export const INDEX_MANAGE_CARD_INFO = {
     },
     {
       id: 3,
-      itemTitle: '洗衣店管理',
+      itemTitle: '洗衣点管理',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497209107/manage3_wfv05u.png',
-      url: '#',
+      url: '/admin/stations/list',
     },
     {
       id: 4,
