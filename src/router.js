@@ -22,6 +22,10 @@ import DeviceEdit from './routes/device/DeviceEdit.js';
 import DeviceApp from './routes/device/DeviceApp.js';
 
 
+import StationApp from './routes/stations/StationApp.js';
+import StationList from './routes/stations/StationList.js';
+
+
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -41,6 +45,10 @@ function RouterConfig({ history }) {
           <Route path="new" component={UserNew} />
           <Route path="info/:userId" component={UserInfo} />
           <Route path="edit/:userId" component={UserEdit} />
+        </Route>
+
+        <Route path="stations" component={StationApp}>
+          <Route path="list" component={StationList} />
         </Route>
 
         <Route path="order" component={OrderApp}>
