@@ -1,0 +1,13 @@
+
+.normal {
+}
+
+.boxId {
+  display: inline;
+  margin-left: 5%;
+}
+
+.price {
+  border: 1px solid #ddd;
+  margin: 5%;
+}

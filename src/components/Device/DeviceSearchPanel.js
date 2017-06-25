@@ -7,11 +7,11 @@ class DeviceSearchPanel extends React.Component {
     value: '',
   };
 
-  onSearch = (keyword) => {
+  onSearch = (boxId) => {
     this.props.dispatch({
-      type: 'device/query',
+      type: 'devices/fetch',
       payload: {
-        keyword,
+        boxId,
       },
     });
   }
