@@ -1,3 +1,6 @@
+import { browserHistory } from 'dva/router';
+import { Toast } from 'antd-mobile';
+import pathToRegexp from 'path-to-regexp';
 import * as deviceService from '../services/device';
 
 export default {
@@ -5,6 +8,8 @@ export default {
   state: {
     free: [],
     ongoing: [],
+    offline: [],
+    broken: [],
   },
 
   reducers: {
@@ -18,9 +23,17 @@ export default {
     },
   },
   effects: {
-    *fetch({ payload: { queryData } }, { call, put }) {
-      const { data } = yield call(deviceService.query, queryData);
-      yield put({ type: 'save', payload: { data } });
+    *fetch({ payload: { boxId } }, { call }) {
+      const { data } = yield call(deviceService.query, boxId);
+      if (typeof (data) === 'undefined' ||
+          typeof (data.responseEntity) === 'undefined' ||
+          typeof (data.responseEntity.status) === 'undefined') {
+        Toast.fail('无相应设备,请仔细检查ID');
+      } else if (data.responseEntity.status === '空闲') {
+        browserHistory.push(`/admin/device/detail/${boxId}`);
+      } else if (data.responseEntity.status === '使用中') {
+        alert('使用中');
+      }
     },
     *fetchAll({ payload: { page = 1 } }, { call, put }) {
       const { data } = yield call(deviceService.queryAll);
@@ -31,7 +44,7 @@ export default {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
         if (pathname === '/admin/device/list') {
-          dispatch({ type: 'querySuccess', payload: query });
+          dispatch({ type: 'fetchAll', payload: query });
         }
       });
     },

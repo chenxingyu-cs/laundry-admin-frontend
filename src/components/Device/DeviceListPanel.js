@@ -5,7 +5,7 @@ import styles from './DeviceListPanel.css';
 
 const TabPane = Tabs.TabPane;
 
-function DeviceListPanel({ free, ongoing }) {
+function DeviceListPanel({ free, ongoing, dispatch }) {
   function callback(key) {
     console.log('onChange', key);
     console.log(free);
@@ -16,12 +16,13 @@ function DeviceListPanel({ free, ongoing }) {
     console.log(ongoing);
   }
 
-  function jumpToOrderDetail(boxId, status) {
-    if (status === '空闲') {
-      alert('跳转启用'); // eslint-disable-line
-    } else if (status === '使用中') {
-      alert('跳转编辑'); // eslint-disable-line
-    }
+  function jumpToOrderDetail(boxId) {
+    dispatch({
+      type: 'devices/fetch',
+      payload: {
+        boxId,
+      },
+    });
   }
 
   return (
@@ -32,7 +33,7 @@ function DeviceListPanel({ free, ongoing }) {
             <div
               key={device.boxId}
               className={styles.card}
-              onClick={() => jumpToOrderDetail(device.boxId, device.status)}
+              onClick={() => jumpToOrderDetail(device.boxId)}
             >
               工控机ID {device.boxId}
             </div>,
@@ -45,7 +46,7 @@ function DeviceListPanel({ free, ongoing }) {
             <div
               key={device.boxId}
               className={styles.card}
-              onClick={() => jumpToOrderDetail(device.boxId, device.status)}
+              onClick={() => jumpToOrderDetail(device.boxId)}
             >
               工控机ID {device.boxId}
             </div>,
@@ -57,8 +58,7 @@ function DeviceListPanel({ free, ongoing }) {
 }
 
 function mapStateToProps(state) {
-  const { free, ongoing } = state.devices;
-  return { free, ongoing };
+  return state.devices;
 }
 
 export default connect(mapStateToProps)(DeviceListPanel);

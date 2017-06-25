@@ -1,8 +1,12 @@
 import request from '../utils/request';
 import { HOST_URL } from '../utils/constants';
 
-export function query(queryData) {
-  return request(`${HOST_URL}/device/query?deviceId=${queryData.deviceId}`);
+export function query(boxId) {
+  return request(`${HOST_URL}/device/start?boxId=${boxId}`);
+}
+
+export function queryAll() {
+  return request(`${HOST_URL}/device/all`);
 }
 
 export function fetch() {

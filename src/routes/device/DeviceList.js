@@ -5,15 +5,19 @@ import MainLayout from '../../components/MainLayout/MainLayout';
 import DeviceListPanel from '../../components/Device/DeviceListPanel';
 import DeviceSearchPanel from '../../components/Device/DeviceSearchPanel';
 
-function DeviceList() {
+function DeviceList({ dispatch }) {
   return (
     <MainLayout mainTitle="设备启用">
       <div className={styles.normal}>
-        <DeviceSearchPanel />
+        <DeviceSearchPanel dispatch={dispatch} />
         <DeviceListPanel />
       </div>
     </MainLayout>
   );
 }
 
-export default connect()(DeviceList);
+function mapStateToProps(state) {
+  return state.devices;
+}
+
+export default connect(mapStateToProps)(DeviceList);
