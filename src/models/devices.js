@@ -7,6 +7,11 @@ export default {
   state: {
     bind: [],
     unbind: [],
+    all: [],
+    free: [],
+    ongoing: [],
+    offline: [],
+    broken: [],
   },
 
   reducers: {
@@ -27,12 +32,18 @@ export default {
       const { data } = yield call(deviceService.queryAll);
       yield put({ type: 'save', payload: { data } });
     },
+    *fetchBindAll({ payload: { page = 1 } }, { call, put }) {
+      const { data } = yield call(deviceService.queryBindAll);
+      yield put({ type: 'save', payload: { data } });
+    },
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
         if (pathname === '/admin/device/list') {
           dispatch({ type: 'fetchAll', payload: query });
+        } else if (pathname === '/admin/device/status') {
+          dispatch({ type: 'fetchBindAll', payload: query });
         }
       });
     },

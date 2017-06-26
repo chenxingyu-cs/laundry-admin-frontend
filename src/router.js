@@ -19,6 +19,7 @@ import OrderApp from './routes/order/OrderApp.js';
 
 import DeviceList from './routes/device/DeviceList.js';
 import DeviceEdit from './routes/device/DeviceEdit.js';
+import DeviceStatus from './routes/device/DeviceStatus.js';
 import DeviceApp from './routes/device/DeviceApp.js';
 
 
@@ -59,6 +60,7 @@ function RouterConfig({ history }) {
 
         <Route path="device" component={DeviceApp}>
           <Route path="list" component={DeviceList} />
+          <Route path="status" component={DeviceStatus} />
           <Route path="detail/:deviceId" component={DeviceEdit} />
           <Route path="unbind/:deviceId" component={DeviceEdit} />
         </Route>

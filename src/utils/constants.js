@@ -55,7 +55,7 @@ export const INDEX_MACHINE_CARD_INFO = {
       id: 8,
       itemTitle: '设备状态',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497209107/machine3_rdssly.png',
-      url: '#',
+      url: '/admin/device/status',
     },
   ],
 };

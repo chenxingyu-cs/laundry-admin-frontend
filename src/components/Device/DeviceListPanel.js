@@ -16,7 +16,7 @@ function DeviceListPanel({ bind, unbind, dispatch }) {
     console.log(bind);
   }
 
-  function jumpToOrderDetail(boxId) {
+  function jumpToDeviceDetail(boxId) {
     dispatch({
       type: 'devices/fetch',
       payload: {
@@ -33,7 +33,7 @@ function DeviceListPanel({ bind, unbind, dispatch }) {
             <div
               key={device.boxId}
               className={styles.card}
-              onClick={() => jumpToOrderDetail(device.boxId)}
+              onClick={() => jumpToDeviceDetail(device.boxId)}
             >
               工控机ID {device.boxId}
             </div>,
@@ -46,7 +46,7 @@ function DeviceListPanel({ bind, unbind, dispatch }) {
             <div
               key={device.boxId}
               className={styles.card}
-              onClick={() => jumpToOrderDetail(device.boxId)}
+              onClick={() => jumpToDeviceDetail(device.boxId)}
             >
               工控机ID {device.boxId}
             </div>,

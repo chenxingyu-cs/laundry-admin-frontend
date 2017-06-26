@@ -9,6 +9,10 @@ export function queryAll() {
   return request(`${HOST_URL}/device/all`);
 }
 
+export function queryBindAll() {
+  return request(`${HOST_URL}/device/bind/all`);
+}
+
 export function testBox(boxId, testData, fee1, fee2, fee3, fee4) {
   const formData = new FormData();     // eslint-disable-line
   formData.append('boxId', boxId);
