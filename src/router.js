@@ -58,6 +58,7 @@ function RouterConfig({ history }) {
         <Route path="device" component={DeviceApp}>
           <Route path="list" component={DeviceList} />
           <Route path="detail/:deviceId" component={DeviceEdit} />
+          <Route path="unbind/:deviceId" component={DeviceEdit} />
         </Route>
       </Route>
     </Router>

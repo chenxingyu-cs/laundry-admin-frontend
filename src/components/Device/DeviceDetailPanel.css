@@ -1,0 +1,17 @@
+
+.normal {
+}
+
+.id {
+  display: inline;
+  margin-left: 5%;
+}
+
+.price {
+  border: 1px solid #ddd;
+  margin: 5%;
+}
+
+.single {
+  margin: 45px 0;
+}

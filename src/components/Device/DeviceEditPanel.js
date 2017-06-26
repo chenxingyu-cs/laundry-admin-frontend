@@ -13,7 +13,6 @@ class DeviceEditPanelExample extends React.Component {
     price2: '',
     price3: '',
     price4: '',
-    button: true,
   };
 
   onTypeChange = (val) => {
@@ -65,6 +64,22 @@ class DeviceEditPanelExample extends React.Component {
         ],
       });
     }
+  };
+
+  onTest = () => {
+    this.props.form.validateFields((error, value) => {
+      this.props.dispatch({
+        type: 'deviceDetail/test',
+        payload: {
+          boxId: this.props.boxId,
+          testData: value,
+          fee1: this.state.price1,
+          fee2: this.state.price2,
+          fee3: this.state.price3,
+          fee4: this.state.price4,
+        },
+      });
+    });
   };
 
   type = [
@@ -218,8 +233,15 @@ class DeviceEditPanelExample extends React.Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
       this.props.dispatch({
-        type: 'deviceDetail/test',
-        payload: { testData: value },
+        type: 'deviceDetail/bind',
+        payload: {
+          boxId: this.props.boxId,
+          testData: value,
+          fee1: this.state.price1,
+          fee2: this.state.price2,
+          fee3: this.state.price3,
+          fee4: this.state.price4,
+        },
       });
     });
   };
@@ -241,13 +263,13 @@ class DeviceEditPanelExample extends React.Component {
             type="deviceId"
           >洗衣机编号</InputItem>
           <InputItem
-            {...getFieldProps('regCode', {
+            {...getFieldProps('qrcode', {
               rules: [
                 { required: true, message: '请输入洗衣机简易识别码' },
               ],
             })}
             extra={'请输入编号'}
-            type="regCode"
+            type="qrcode"
           >简易识别码</InputItem>
           <Picker
             {...getFieldProps('type', {
@@ -283,10 +305,10 @@ class DeviceEditPanelExample extends React.Component {
         />
         <Flex>
           <Flex.Item>
-            <Button className="btn" type="primary" onClick={this.submit}>设备测试</Button>
+            <Button className="btn" type="primary" onClick={this.onTest}>设备测试</Button>
           </Flex.Item>
           <Flex.Item>
-            <Button className="btn" disabled={this.state.button} onClick={() => console.log('Disable')}>启用设备</Button>
+            <Button className="btn" disabled={this.props.test} onClick={this.submit}>启用设备</Button>
           </Flex.Item>
         </Flex>
       </div>

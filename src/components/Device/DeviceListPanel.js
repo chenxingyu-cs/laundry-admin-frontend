@@ -5,15 +5,15 @@ import styles from './DeviceListPanel.css';
 
 const TabPane = Tabs.TabPane;
 
-function DeviceListPanel({ free, ongoing, dispatch }) {
+function DeviceListPanel({ bind, unbind, dispatch }) {
   function callback(key) {
     console.log('onChange', key);
-    console.log(free);
+    console.log(unbind);
   }
 
   function handleTabClick(key) {
     console.log('onTabClick', key);
-    console.log(ongoing);
+    console.log(bind);
   }
 
   function jumpToOrderDetail(boxId) {
@@ -29,7 +29,7 @@ function DeviceListPanel({ free, ongoing, dispatch }) {
     <Tabs defaultActiveKey="1" onChange={callback} onTabClick={handleTabClick}>
       <TabPane tab="未启用设备" key="1">
         <List>
-          {free.map(device =>
+          {unbind.map(device =>
             <div
               key={device.boxId}
               className={styles.card}
@@ -42,7 +42,7 @@ function DeviceListPanel({ free, ongoing, dispatch }) {
       </TabPane>
       <TabPane tab="已启用设备" key="2">
         <List>
-          {ongoing.map(device =>
+          {bind.map(device =>
             <div
               key={device.boxId}
               className={styles.card}
