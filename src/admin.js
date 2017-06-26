@@ -27,6 +27,8 @@ app.model(require('./models/deviceDetail'));
 
 app.model(require('./models/adminUsers'));
 
+app.model(require('./models/auth'));
+
 // 4. Router
 app.router(require('./router'));
 
