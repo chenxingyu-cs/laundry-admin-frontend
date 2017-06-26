@@ -1,29 +1,13 @@
 import React from 'react';
 import { List, InputItem, Button, Toast, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import { ROLE_DATA_FOR_PICKER } from '../../utils/roleFormatter';
 import styles from './UserEditPanel.css';
-
-const characters = [
-  {
-    label: '管理员',
-    value: '1',
-  },
-  {
-    label: '修理员',
-    value: '2',
-  },
-  {
-    label: '观察员',
-    value: '3',
-  },
-];
-
-// const test = { label: '测试加盟商', value: info.id };
 
 // TODO: Add a formattoer accordint to previliege.
 // Add 1 for 1 previliege
 
-function BasicInput({ form, franchiseeList, userInfo }) {
+function BasicInput({ form, franchiseeList, userInfo, dispatch }) {
   const { getFieldProps, getFieldError } = form;
 
   function formatListToPickerData(infoList) {
@@ -37,25 +21,21 @@ function BasicInput({ form, franchiseeList, userInfo }) {
     form.validateFields({ force: true }, (error) => {
       if (!error) {
         const values = form.getFieldsValue();
-        // dispatch({
-        //   type: 'franchisees/edit',
-        //   payload: {
-        //     name: values.name,
-        //     phone: values.phone,
-        //   },
-        // });
+        const actionType = userInfo ? 'adminUsers/edit' : 'adminUsers/create';
+        dispatch({
+          type: actionType,
+          payload: {
+            id: userInfo ? userInfo.id : 0,
+            name: values.name,
+            mobile: values.phone,
+            franchiseeId: values.franchisee[0],
+            authorityLevel: values.authorityLevel[0],
+          },
+        });
         console.log('values', values);
       }
     });
   }
-
-  // function validateName(rule, value, callback) {
-  //   if (value && value.length > 0) {
-  //     callback();
-  //   } else {
-  //     callback(new Error('姓名至少4个字符'));
-  //   }
-  // }
 
   function validatePhone(rule, value, callback) {
     if (value && value.length >= 11) {
@@ -89,7 +69,7 @@ function BasicInput({ form, franchiseeList, userInfo }) {
           </InputItem>
           <InputItem
             {...getFieldProps('phone', {
-              initialValue: userInfo ? userInfo.phone : '',
+              initialValue: userInfo ? userInfo.mobile : '',
               rules: [
                 { required: true, message: '请输入手机号码' },
                 { validator: validatePhone },
@@ -118,12 +98,12 @@ function BasicInput({ form, franchiseeList, userInfo }) {
           </Picker>
 
           <Picker
-            {...getFieldProps('character', {
+            {...getFieldProps('authorityLevel', {
               rules: [
                 { required: true, message: '请选择角色' },
               ],
             })}
-            data={characters}
+            data={ROLE_DATA_FOR_PICKER}
             cols={1}
           >
             <List.Item arrow="horizontal">角色</List.Item>

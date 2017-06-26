@@ -2,72 +2,36 @@ import request from '../utils/request';
 import { HOST_URL } from '../utils/constants';
 
 export function fetch() {
-  // return request(`${HOST_URL}/franchisee/all`);
-  return testUsers;
+  return request(`${HOST_URL}/admin/all`);
+  // return testUsers;
 }
 
-export function createFranchisee(name, phone, desc = '') {
+export function create(name, mobile, franchiseeId, level) {
   const formData = new FormData();     // eslint-disable-line
   formData.append('name', name);
-  formData.append('phone', phone);
-  formData.append('desc', desc);
-  return request(`${HOST_URL}/franchisee/add`, {
+  formData.append('mobile', mobile);
+  formData.append('franchisee_id', franchiseeId);
+  formData.append('level', level);
+  return request(`${HOST_URL}/admin/add`, {
     method: 'POST',
     body: formData,
   });
 }
 
-export function edit(id, name, phone, desc = '') {
+export function edit(id, name, mobile, franchiseeId, level) {
   const formData = new FormData();     // eslint-disable-line
-  formData.append('id', id);
   formData.append('name', name);
-  formData.append('phone', phone);
-  formData.append('desc', desc);
-  return request(`${HOST_URL}/franchisee/update`, {
-    method: 'POST',
+  formData.append('mobile', mobile);
+  formData.append('franchisee_id', franchiseeId);
+  formData.append('level', level);
+  return request(`${HOST_URL}/admin/${id}`, {
+    method: 'PUT',
     body: formData,
   });
 }
 
 export function remove(id) {
-  return request(`${HOST_URL}/franchisee/delete?id=${id}`);
+  return request(`${HOST_URL}/admin/${id}`, {
+    method: 'DELETE',
+  });
 }
-
-const testUsers = [
-  {
-    id: 1,
-    name: 'User1',
-    character: '管理员',
-    phone: '3245343243',
-  },
-  {
-    id: 2,
-    name: 'User2',
-    character: '管理员',
-    phone: '3245343243',
-  },
-  {
-    id: 3,
-    name: 'User3',
-    character: '管理员',
-    phone: '3245343243',
-  },
-  {
-    id: 4,
-    name: 'User4',
-    character: '管理员',
-    phone: '3245343243',
-  },
-  {
-    id: 5,
-    name: 'User5',
-    character: '管理员',
-    phone: '3245343243',
-  },
-  {
-    id: 6,
-    name: 'User6',
-    character: '管理员',
-    phone: '3245343243',
-  },
-];

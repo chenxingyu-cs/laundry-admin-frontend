@@ -33,7 +33,7 @@ function UserListCard({ infoList }) {
 
         {infoList.map(info => (
           <Item
-            extra={getPhoneWrapper(info.phone)}
+            extra={getPhoneWrapper(info.mobile)}
             arrow="horizontal"
             key={info.id}
             onClick={() => browserHistory.push(`/admin/users/info/${info.id}`)}

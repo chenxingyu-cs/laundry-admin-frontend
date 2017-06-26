@@ -24,6 +24,7 @@ import DeviceApp from './routes/device/DeviceApp.js';
 
 import StationApp from './routes/stations/StationApp.js';
 import StationList from './routes/stations/StationList.js';
+import StationNew from './routes/stations/StationNew.js';
 
 
 function RouterConfig({ history }) {
@@ -49,6 +50,7 @@ function RouterConfig({ history }) {
 
         <Route path="stations" component={StationApp}>
           <Route path="list" component={StationList} />
+          <Route path="new" component={StationNew} />
         </Route>
 
         <Route path="order" component={OrderApp}>

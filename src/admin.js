@@ -1,6 +1,7 @@
 import dva from 'dva';
 import { browserHistory } from 'dva/router';
 import './admin.css';
+import { initWXSDK } from './utils/wx';
 
 // 1. Initialize
 const app = dva({
@@ -9,6 +10,7 @@ const app = dva({
 
 // 2. Plugins
 // app.use({});
+initWXSDK();
 
 // 3. Model
 app.model(require('./models/example'));
@@ -24,6 +26,8 @@ app.model(require('./models/devices'));
 app.model(require('./models/deviceDetail'));
 
 app.model(require('./models/adminUsers'));
+
+app.model(require('./models/auth'));
 
 // 4. Router
 app.router(require('./router'));
