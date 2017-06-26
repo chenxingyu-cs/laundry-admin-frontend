@@ -1,3 +1,13 @@
 
 .normal {
+
+
+}
+
+/*input {
+  text-align: right;
+}*/
+
+:global .am-list-footer {
+  padding: 0;
 }

@@ -29,6 +29,8 @@ app.model(require('./models/adminUsers'));
 
 app.model(require('./models/auth'));
 
+app.model(require('./models/machines'));
+
 // 4. Router
 app.router(require('./router'));
 
