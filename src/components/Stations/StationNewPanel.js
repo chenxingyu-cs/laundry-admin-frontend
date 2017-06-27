@@ -70,7 +70,8 @@ class BasicInput extends React.Component {
 
   render() {
     const { getFieldProps, getFieldError } = this.props.form;
-    const userData = fromIdList(this.props.userList);
+    const operatorsData = fromIdList(this.props.operators);
+    const observersData = fromIdList(this.props.observers);
     return (
       <div className={styles.normal}>
         <form>
@@ -163,7 +164,7 @@ class BasicInput extends React.Component {
 
             <Picker
               {...getFieldProps('operator')}
-              data={userData}
+              data={observersData}
               cols={1}
             >
               <List.Item arrow="horizontal">维修员</List.Item>
@@ -171,7 +172,7 @@ class BasicInput extends React.Component {
 
             <Picker
               {...getFieldProps('observer')}
-              data={userData}
+              data={operatorsData}
               cols={1}
             >
               <List.Item arrow="horizontal">观察员</List.Item>
@@ -183,7 +184,7 @@ class BasicInput extends React.Component {
         <Accordion>
           <Accordion.Panel header="选择管理员">
             <List>
-              {this.props.userList.map(user => (
+              {this.props.administrators.map(user => (
                 <CheckboxItem key={user.id} onChange={() => this.selectUsers(user.id)}>
                   {user.name}
                 </CheckboxItem>

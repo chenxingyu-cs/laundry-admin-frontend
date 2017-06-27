@@ -31,6 +31,8 @@ app.model(require('./models/auth'));
 
 app.model(require('./models/machines'));
 
+app.model(require('./models/franchiseeUsers'));
+
 // 4. Router
 app.router(require('./router'));
 

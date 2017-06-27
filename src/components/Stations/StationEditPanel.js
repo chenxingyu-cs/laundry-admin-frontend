@@ -48,8 +48,6 @@ class BasicInput extends React.Component {
   }
 
   selectUsers = (value) => {
-    console.log('state', this.state.selectedUsers);
-
     if (this.state.selectedUsers.includes(value)) {
       this.setState({ selectedUsers: this.state.selectedUsers.filter(v => v !== value) });
     } else {
@@ -58,8 +56,6 @@ class BasicInput extends React.Component {
   }
 
   selectMachines = (value) => {
-    console.log('state', this.state.selectedMachines);
-
     if (this.state.selectedMachines.includes(value)) {
       this.setState({ selectedMachines: this.state.selectedMachines.filter(v => v !== value) });
     } else {

@@ -27,10 +27,10 @@ import StationNewPanel from '../../components/Stations/StationNewPanel';
 //   },
 // ];
 
-function StationNew({ dispatch, userList, machineList }) {
-  if (userList.length === 0) {
+function StationNew({ dispatch, machineList, operators, administrators, observers }) {
+  if (operators.length === 0 || administrators.length === 0 || observers.length === 0) {
     dispatch({
-      type: 'adminUsers/fetch',
+      type: 'franchiseeUsers/fetch',
       payload: {
         page: 1,
       },
@@ -49,16 +49,22 @@ function StationNew({ dispatch, userList, machineList }) {
   return (
     <MainLayout mainTitle="新建洗衣点">
       <div className={styles.normal}>
-        <StationNewPanel dispatch={dispatch} machineList={machineList} userList={userList} />
+        <StationNewPanel
+          dispatch={dispatch}
+          machineList={machineList}
+          operators={operators}
+          administrators={administrators}
+          observers={observers}
+        />
       </div>
     </MainLayout>
   );
 }
 
 function mapStateToProps(state) {
-  const { list: userList } = state.adminUsers;
   const { list: machineList } = state.machines;
-  return { userList, machineList };
+  const { operators, administrators, observers } = state.franchiseeUsers;
+  return { machineList, operators, administrators, observers };
 }
 
 export default connect(mapStateToProps)(StationNew);
