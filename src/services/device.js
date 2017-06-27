@@ -5,6 +5,10 @@ export function query(boxId) {
   return request(`${HOST_URL}/device/start?boxId=${boxId}`);
 }
 
+export function queryStatus(boxId) {
+  return request(`${HOST_URL}/device?boxId=${boxId}`);
+}
+
 export function queryAll() {
   return request(`${HOST_URL}/device/all`);
 }

@@ -1,4 +1,5 @@
 import { connect } from 'dva';
+import { browserHistory } from 'dva/router';
 import { List, Tabs } from 'antd-mobile';
 import React from 'react';
 import styles from './DeviceStatusPanel.css';
@@ -14,6 +15,10 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
     console.log('onTabClick', key);
   }
 
+  function jumpToDeviceStatusDetail(boxId) {
+    browserHistory.push(`/admin/device/statusDetail/${boxId}`);
+  }
+
   return (
     <Tabs defaultActiveKey="1" onChange={callback} onTabClick={handleTabClick}>
       <TabPane tab="全部" key="1">
@@ -24,7 +29,7 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
                 wrap="true"
                 extra={device.status}
                 align="top"
-                onClick={() => console.log(device.boxId)}
+                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
                 multipleLine
               >
                 {device.stationName}
@@ -49,7 +54,7 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
                 wrap="true"
                 extra={device.status}
                 align="top"
-                onClick={() => console.log(device.boxId)}
+                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
                 multipleLine
               >
                 {device.stationName}
@@ -74,7 +79,7 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
                 wrap="true"
                 extra={device.status}
                 align="top"
-                onClick={() => console.log(device.boxId)}
+                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
                 multipleLine
               >
                 {device.stationName}
@@ -99,7 +104,7 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
                 wrap="true"
                 extra={device.status}
                 align="top"
-                onClick={() => console.log(device.boxId)}
+                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
                 multipleLine
               >
                 {device.stationName}
@@ -124,7 +129,7 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
                 wrap="true"
                 extra={device.status}
                 align="top"
-                onClick={() => console.log(device.boxId)}
+                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
                 multipleLine
               >
                 {device.stationName}

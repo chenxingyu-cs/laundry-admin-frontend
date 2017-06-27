@@ -27,6 +27,10 @@ export default {
       const { data } = yield call(deviceService.query, boxId);
       yield put({ type: 'save', payload: { data } });
     },
+    *fetchStatus({ payload: { boxId } }, { call, put }) {
+      const { data } = yield call(deviceService.queryStatus, boxId);
+      yield put({ type: 'save', payload: { data } });
+    },
     *test({ payload: { boxId, testData, fee1, fee2, fee3, fee4 } }, { call, put }) {
       if (!(testData.deviceId && testData.qrcode && testData.model &&
         testData.type && fee1 && fee2 && fee3 && fee4)) {
@@ -70,12 +74,16 @@ export default {
       return history.listen(({ pathname }) => {
         const matchDetail = pathToRegexp('/admin/device/detail/:deviceId').exec(pathname);
         const matchUnbind = pathToRegexp('/admin/device/unbind/:deviceId').exec(pathname);
+        const matchStatus = pathToRegexp('/admin/device/statusDetail/:deviceId').exec(pathname);
         if (matchDetail) {
           const boxId = matchDetail[1];
           dispatch({ type: 'fetch', payload: { boxId } });
         } else if (matchUnbind) {
           const boxId = matchUnbind[1];
           dispatch({ type: 'unbind', payload: { boxId } });
+        } else if (matchStatus) {
+          const boxId = matchStatus[1];
+          dispatch({ type: 'fetchStatus', payload: { boxId } });
         }
       });
     },
