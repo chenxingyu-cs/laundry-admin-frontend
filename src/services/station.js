@@ -8,7 +8,10 @@ export function fetch() {
 export function create(values) {
   return request(`${HOST_URL}/station/add`, {
     method: 'POST',
-    body: values,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
   });
 }
 
