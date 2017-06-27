@@ -18,7 +18,6 @@ export default {
   effects: {
     *fetch({ payload: { page = 1 } }, { call, put }) {
       const { data } = yield call(stationService.fetch);
-      // const data = yield call(stationService.fetch);
       yield put({ type: 'save', payload: { data } });
     },
 
