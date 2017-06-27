@@ -5,14 +5,10 @@ export function fetch() {
   return request(`${HOST_URL}/station/all`);
 }
 
-export function createFranchisee(name, phone, desc = '') {
-  const formData = new FormData();     // eslint-disable-line
-  formData.append('name', name);
-  formData.append('phone', phone);
-  formData.append('desc', desc);
-  return request(`${HOST_URL}/franchisee/add`, {
+export function create(values) {
+  return request(`${HOST_URL}/station/add`, {
     method: 'POST',
-    body: formData,
+    body: values,
   });
 }
 

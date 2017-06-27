@@ -2,7 +2,7 @@ import React from 'react';
 import { List, InputItem, Button, Picker, Toast, Checkbox, Accordion, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { fromIdList } from '../../utils/pickerHelper';
-import styles from './StationNewPanel.css';
+import styles from './StationEditPanel.css';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
@@ -38,6 +38,13 @@ class BasicInput extends React.Component {
   formatTime = (timeData) => {
     const formatted = `${timeData.slice(0, 2)}:${timeData.slice(2)}`;
     return formatted;
+  }
+
+  formatTimeToNumber = (timeStringData) => {
+    if (timeStringData) {
+      const formatted = timeStringData.replace(':', '');
+      return parseInt(formatted, 10);
+    }
   }
 
   selectUsers = (value) => {
@@ -79,6 +86,7 @@ class BasicInput extends React.Component {
           >
             <InputItem
               {...getFieldProps('name', {
+                initialValue: this.props.stationInfo.name,
                 rules: [
                   { required: true, message: '请输入名称' },
                 ],
@@ -94,6 +102,7 @@ class BasicInput extends React.Component {
             </InputItem>
             <InputItem
               {...getFieldProps('location', {
+                initialValue: this.props.stationInfo.location,
                 rules: [
                   { required: true, message: '请输入详细地址' },
                 ],
@@ -109,7 +118,7 @@ class BasicInput extends React.Component {
             </InputItem>
             <InputItem
               {...getFieldProps('ratio', {
-                initialValue: 100,
+                initialValue: this.props.stationInfo.ratio ? this.props.stationInfo.ratio : 100,
                 rules: [
                   { required: true, message: '请输入分账比例' },
                 ],
@@ -119,7 +128,6 @@ class BasicInput extends React.Component {
                 Toast.fail(getFieldError('ratio').join('、'), 1);
               }}
               type="number"
-              disabled
               extra="%"
             >
               分账比例
@@ -127,6 +135,7 @@ class BasicInput extends React.Component {
 
             <InputItem
               {...getFieldProps('startTime', {
+                initialValue: this.formatTimeToNumber(this.props.stationInfo.openTime),
                 rules: [
                   { required: true, message: '请输入营业开始时间' },
                   { validator: this.validateTime },
@@ -145,6 +154,7 @@ class BasicInput extends React.Component {
 
             <InputItem
               {...getFieldProps('closeTime', {
+                initialValue: this.formatTimeToNumber(this.props.stationInfo.closeTime),
                 rules: [
                   { required: true, message: '请输入营业结束时间' },
                   { validator: this.validateTime },
@@ -217,5 +227,6 @@ class BasicInput extends React.Component {
   }
 }
 
-const StationNewPanel = createForm()(BasicInput);
-export default StationNewPanel;
+const StationEditPanel = createForm()(BasicInput);
+
+export default StationEditPanel;
