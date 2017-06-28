@@ -22,10 +22,10 @@ export function fromAuthorityLevel(authorityLevel) {
 
 
 export const ROLE_DATA_FOR_PICKER = [
-  {
-    label: '超级管理员',
-    value: '100',
-  },
+  // {
+  //   label: '超级管理员',
+  //   value: '100',
+  // },
   {
     label: '管理员',
     value: '200',

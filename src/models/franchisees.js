@@ -28,7 +28,7 @@ export default {
 
     *create({ payload: { name, phone } }, { call }) {
       const { data } = yield call(franchiseeService.createFranchisee, name, phone);
-      if (data.status === 'OK') {
+      if (data.status && data.status === 'OK') {
         Toast.success('新建成功！', 1);
         browserHistory.push('/admin/franchisee/list');
       } else {
@@ -39,7 +39,7 @@ export default {
 
     *edit({ payload: { id, name, phone } }, { call }) {
       const { data } = yield call(franchiseeService.edit, id, name, phone);
-      if (data.status === 'OK') {
+      if (data.status && data.status === 'OK') {
         Toast.success('编辑成功！', 1);
         browserHistory.push('/admin/franchisee/list');
       } else {
@@ -49,7 +49,7 @@ export default {
 
     *remove({ payload: { id } }, { call }) {
       const { data } = yield call(franchiseeService.remove, id);
-      if (data.status === 'OK') {
+      if (data.status && data.status === 'OK') {
         Toast.success('删除成功！', 1);
         browserHistory.push('/admin/franchisee/list');
       } else {
