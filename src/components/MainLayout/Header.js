@@ -20,7 +20,7 @@ function Header({ mainTitle, rightTitle, rightDestination }) {
 
   return (
     <NavBar
-      leftContent="" mode="light" onLeftClick={() => browserHistory.goBack()}
+      leftContent="" mode="light" onLeftClick={() => browserHistory.push('/admin/menu')}
       rightContent={rightContentComponent}
     >
       {mainTitleText}

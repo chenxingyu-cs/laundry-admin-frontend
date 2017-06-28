@@ -18,17 +18,14 @@ class FranchiseeListPanel extends React.Component {
   }
 
   onChange = (value) => {
-    console.log(value, 'onChange');
     this.setState({ value });
   };
 
   onSubmit = (value) => {
-    console.log(value, 'onSubmit');
     this.onSearch(value);
   };
 
   onClickSubmitButton = () => {
-    console.log(this.state.value, 'buttonSubmit');
     this.onSearch(this.state.value);
   }
 

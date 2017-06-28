@@ -5,6 +5,15 @@ import MainLayout from '../../components/MainLayout/MainLayout';
 import UserEditPanel from '../../components/Users/UserEditPanel';
 
 function UserEdit({ franchiseeList, userList, params, dispatch }) {
+  if (franchiseeList.length === 0) {
+    dispatch({
+      type: 'franchisees/fetch',
+      payload: {
+        page: 1,
+      },
+    });
+  }
+
   const userInfo = userList.find(item => item.id === parseInt(params.userId, 10));
 
   return (

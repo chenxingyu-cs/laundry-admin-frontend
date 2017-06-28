@@ -35,6 +35,7 @@ function UserInfoPanel({ info, dispatch }) {
         <Item extra={info.name}>姓名</Item>
         <Item extra={info.mobile}>电话</Item>
         <Item extra={fromAuthorityLevel(info.authorityLevel)}>角色</Item>
+        <Item extra={info.franchisee.name}>加盟商</Item>
       </List>
 
       <WhiteSpace />
