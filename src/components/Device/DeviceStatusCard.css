@@ -1,0 +1,12 @@
+
+.normal {
+}
+
+.list {
+  max-width: 720px;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+}

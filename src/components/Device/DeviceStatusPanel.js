@@ -1,8 +1,8 @@
 import { connect } from 'dva';
-import { browserHistory } from 'dva/router';
-import { List, Tabs } from 'antd-mobile';
+import { Tabs } from 'antd-mobile';
 import React from 'react';
 import styles from './DeviceStatusPanel.css';
+import DeviceStatusCard from './DeviceStatusCard';
 
 const TabPane = Tabs.TabPane;
 
@@ -15,136 +15,32 @@ function DeviceStatusPanel({ all, free, ongoing, offline, broken }) {
     console.log('onTabClick', key);
   }
 
-  function jumpToDeviceStatusDetail(boxId) {
-    browserHistory.push(`/admin/device/statusDetail/${boxId}`);
-  }
-
   return (
-    <Tabs defaultActiveKey="1" onChange={callback} onTabClick={handleTabClick}>
+    <Tabs defaultActiveKey="1" className={styles.tab} onChange={callback} onTabClick={handleTabClick} swipeable={false}>
       <TabPane tab="全部" key="1">
-        <List>
-          {all.map(device =>
-            <div className={styles.normal} key={device.boxId}>
-              <List.Item
-                wrap="true"
-                extra={device.status}
-                align="top"
-                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
-                multipleLine
-              >
-                {device.stationName}
-                <List.Item.Brief wrap="true">
-                  <span> {device.currentWeekIncome}元 </span>
-                  <span className={styles.center}> {device.deviceModel} </span>
-                </List.Item.Brief>
-                <List.Item.Brief wrap="true">
-                  <span> 当周营业额 </span>
-                  <span className={styles.center}> 洗衣机型号 </span>
-                </List.Item.Brief>
-              </List.Item>
-            </div>,
-          )}
-        </List>
+        <div>
+          <DeviceStatusCard list={all} />
+        </div>
       </TabPane>
       <TabPane tab="空闲" key="2">
-        <List>
-          {free.map(device =>
-            <div className={styles.normal} key={device.boxId}>
-              <List.Item
-                wrap="true"
-                extra={device.status}
-                align="top"
-                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
-                multipleLine
-              >
-                {device.stationName}
-                <List.Item.Brief wrap="true">
-                  <span> {device.currentWeekIncome}元 </span>
-                  <span className={styles.center}> {device.deviceModel} </span>
-                </List.Item.Brief>
-                <List.Item.Brief wrap="true">
-                  <span> 当周营业额 </span>
-                  <span className={styles.center}> 洗衣机型号 </span>
-                </List.Item.Brief>
-              </List.Item>
-            </div>,
-          )}
-        </List>
+        <div>
+          <DeviceStatusCard list={free} />
+        </div>
       </TabPane>
       <TabPane tab="运行中" key="3">
-        <List>
-          {ongoing.map(device =>
-            <div className={styles.normal} key={device.boxId}>
-              <List.Item
-                wrap="true"
-                extra={device.status}
-                align="top"
-                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
-                multipleLine
-              >
-                {device.stationName}
-                <List.Item.Brief wrap="true">
-                  <span> {device.currentWeekIncome}元 </span>
-                  <span className={styles.center}> {device.deviceModel} </span>
-                </List.Item.Brief>
-                <List.Item.Brief wrap="true">
-                  <span> 当周营业额 </span>
-                  <span className={styles.center}> 洗衣机型号 </span>
-                </List.Item.Brief>
-              </List.Item>
-            </div>,
-          )}
-        </List>
+        <div>
+          <DeviceStatusCard list={ongoing} />
+        </div>
       </TabPane>
       <TabPane tab="掉线" key="4">
-        <List>
-          {offline.map(device =>
-            <div className={styles.normal} key={device.boxId}>
-              <List.Item
-                wrap="true"
-                extra={device.status}
-                align="top"
-                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
-                multipleLine
-              >
-                {device.stationName}
-                <List.Item.Brief wrap="true">
-                  <span> {device.currentWeekIncome}元 </span>
-                  <span className={styles.center}> {device.deviceModel} </span>
-                </List.Item.Brief>
-                <List.Item.Brief wrap="true">
-                  <span> 当周营业额 </span>
-                  <span className={styles.center}> 洗衣机型号 </span>
-                </List.Item.Brief>
-              </List.Item>
-            </div>,
-          )}
-        </List>
+        <div>
+          <DeviceStatusCard list={offline} />
+        </div>
       </TabPane>
       <TabPane tab="故障" key="5">
-        <List>
-          {broken.map(device =>
-            <div className={styles.normal} key={device.boxId}>
-              <List.Item
-                wrap="true"
-                extra={device.status}
-                align="top"
-                onClick={() => jumpToDeviceStatusDetail(device.boxId)}
-                multipleLine
-              >
-                {device.stationName}
-                <List.Item.Brief wrap="true">
-                  <span> {device.currentWeekIncome}元 </span>
-                  <span className={styles.center}> {device.deviceModel} </span>
-                </List.Item.Brief>
-                <List.Item.Brief wrap="true">
-                  <span> 当周营业额 </span>
-                  <span className={styles.center}> 洗衣机型号 </span>
-                </List.Item.Brief>
-              </List.Item>
-            </div>,
-          )}
-        </List>
+        <div>
+          <DeviceStatusCard list={broken} />
+        </div>
       </TabPane>
     </Tabs>
   );

@@ -2,15 +2,7 @@
 .normal {
 }
 
-.card {
-  display: flex;
-  width: 95%;
-  padding: 2% 2% 2% 5%;
-  border-bottom: 1px solid black;
-  font-size: 0.875em;
-}
-
-.center {
-  position: absolute;
-  left: 50%;
+.tab {
+  width: 100%;
+  max-width: 750px;
 }
