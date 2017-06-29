@@ -16,14 +16,14 @@ class BasicInput extends React.Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const formValues = this.props.form.getFieldsValue();
-        let { observer, operator, closeTime, startTime } = formValues;
+        let { observer, operator, closeTime, openTime } = formValues;
         observer = observer ? observer[0] : 0;
         operator = operator ? operator[0] : 0;
         closeTime = this.formatTime(closeTime);
-        startTime = this.formatTime(startTime);
+        openTime = this.formatTime(openTime);
         const machines = this.state.selectedMachines;
         const administrators = this.state.selectedUsers;
-        const values = { ...formValues, observer, operator, closeTime, startTime, machines, administrators }; // eslint-disable-line
+        const values = { ...formValues, observer, operator, closeTime, openTime, machines, administrators }; // eslint-disable-line
         console.log('values', values);
         this.props.dispatch({
           type: 'stations/create',
@@ -127,16 +127,16 @@ class BasicInput extends React.Component {
             </InputItem>
 
             <InputItem
-              {...getFieldProps('startTime', {
+              {...getFieldProps('openTime', {
                 rules: [
                   { required: true, message: '请输入营业开始时间' },
                   { validator: this.validateTime },
                 ],
               })}
               clear
-              error={!!getFieldError('startTime')}
+              error={!!getFieldError('openTime')}
               onErrorClick={() => {
-                Toast.fail(getFieldError('startTime').join('、'), 1);
+                Toast.fail(getFieldError('openTime').join('、'), 1);
               }}
               placeholder="0900代表09:00，上午9点"
               type="number"

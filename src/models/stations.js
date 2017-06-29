@@ -26,7 +26,7 @@ export default {
       console.log('data', data, error);
       if (data.status === 'OK') {
         Toast.success('新建成功！', 1);
-        browserHistory.push('/admin/franchisee/list');
+        browserHistory.push('/admin/stations/list');
       } else {
         Toast.fail('新建失败，请重试！', 1);
       }

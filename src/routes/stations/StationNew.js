@@ -35,9 +35,7 @@ function StationNew({ dispatch, machineList, operators, administrators, observer
         page: 1,
       },
     });
-  }
 
-  if (machineList.length === 0) {
     dispatch({
       type: 'machines/fetch',
       payload: {
@@ -45,6 +43,14 @@ function StationNew({ dispatch, machineList, operators, administrators, observer
       },
     });
   }
+
+  // dispatch({
+  //   type: 'machines/fetch',
+  //   payload: {
+  //     page: 1,
+  //   },
+  // });
+
 
   return (
     <MainLayout mainTitle="新建洗衣点">
