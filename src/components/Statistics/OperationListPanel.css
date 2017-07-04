@@ -1,0 +1,15 @@
+
+.normal {
+}
+
+.title {
+  border-bottom: solid;
+  text-align: center;
+}
+
+.right {
+  position: absolute;
+  right: 10%;
+  color: #ff4d79;
+  font-weight: bold;
+}

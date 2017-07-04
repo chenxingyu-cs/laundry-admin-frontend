@@ -21,6 +21,8 @@ app.model(require('./models/stations'));
 
 app.model(require('./models/orders'));
 
+app.model(require('./models/operations'));
+
 app.model(require('./models/devices'));
 
 app.model(require('./models/deviceDetail'));

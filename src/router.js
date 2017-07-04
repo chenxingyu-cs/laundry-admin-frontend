@@ -17,6 +17,9 @@ import UserEdit from './routes/users/UserEdit.js';
 import OrderQuery from './routes/order/OrderQuery.js';
 import OrderApp from './routes/order/OrderApp.js';
 
+import OperationStat from './routes/statistics/OperationStat.js';
+import OperationApp from './routes/statistics/OperationApp.js';
+
 import DeviceList from './routes/device/DeviceList.js';
 import DeviceEdit from './routes/device/DeviceEdit.js';
 import DeviceStatus from './routes/device/DeviceStatus.js';
@@ -59,6 +62,10 @@ function RouterConfig({ history }) {
 
         <Route path="order" component={OrderApp}>
           <Route path="query" component={OrderQuery} />
+        </Route>
+
+        <Route path="operation" component={OperationApp}>
+          <Route path="statistics" component={OperationStat} />
         </Route>
 
         <Route path="device" component={DeviceApp}>

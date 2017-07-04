@@ -67,7 +67,7 @@ export const INDEX_OPERATION_CARD_INFO = {
       id: 9,
       itemTitle: '运营统计',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497155974/yunying1_ygncyy.png',
-      url: '#',
+      url: '/admin/operation/statistics',
     },
     {
       id: 10,

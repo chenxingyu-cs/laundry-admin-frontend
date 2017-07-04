@@ -1,0 +1,38 @@
+
+.normal {
+}
+
+.day {
+  background-color: #ccb3ff;
+  height: 100px;
+}
+
+.month {
+  background-color: #ffbb99;
+  height: 100px;
+}
+
+.year {
+  background-color: #99ff99;
+  height: 100px;
+}
+
+.p {
+  position: relative;
+  top: 35%;
+  left: 30%;
+}
+
+.sum {
+  background-color: #ff4d79;
+  height: 300px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
