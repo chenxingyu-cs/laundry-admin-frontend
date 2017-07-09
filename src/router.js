@@ -24,7 +24,9 @@ import DeviceList from './routes/device/DeviceList.js';
 import DeviceEdit from './routes/device/DeviceEdit.js';
 import DeviceStatus from './routes/device/DeviceStatus.js';
 import DeviceDetail from './routes/device/DeviceStatusDetail.js';
+import DeviceAllocate from './routes/device/DeviceAllocate.js';
 import DeviceApp from './routes/device/DeviceApp.js';
+import DeviceAllocateFranchisee from './routes/device/DeviceAllocateFranchisee.js';
 
 
 import StationApp from './routes/stations/StationApp.js';
@@ -71,6 +73,8 @@ function RouterConfig({ history }) {
         <Route path="device" component={DeviceApp}>
           <Route path="list" component={DeviceList} />
           <Route path="status" component={DeviceStatus} />
+          <Route path="allocate/devices" component={DeviceAllocate} />
+          <Route path="allocate/franchisee" component={DeviceAllocateFranchisee} />
           <Route path="detail/:deviceId" component={DeviceEdit} />
           <Route path="unbind/:deviceId" component={DeviceEdit} />
           <Route path="statusDetail/:deviceId" component={DeviceDetail} />

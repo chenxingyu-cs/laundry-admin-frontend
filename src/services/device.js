@@ -67,3 +67,17 @@ export function bindBox(boxId, testData, fee1, fee2, fee3, fee4) {
 export function unbindBox(boxId) {
   return request(`${HOST_URL}/device/unbind?boxId=${boxId}`);
 }
+
+export function allocateDevices(values) {
+  return request(`${HOST_URL}/device/assign`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
+  });
+}
+
+export function fetchUnallocated() {
+  return request(`${HOST_URL}/device/unassigned/all`);
+}

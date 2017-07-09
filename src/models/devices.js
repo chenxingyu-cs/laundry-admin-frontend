@@ -28,10 +28,12 @@ export default {
         browserHistory.push(`/admin/device/detail/${boxId}`);
       }
     },
+
     *fetchAll({ payload: { page = 1 } }, { call, put }) {
       const { data } = yield call(deviceService.queryAll);
       yield put({ type: 'save', payload: { data } });
     },
+
     *fetchBindAll({ payload: { page = 1 } }, { call, put }) {
       const { data } = yield call(deviceService.queryBindAll);
       yield put({ type: 'save', payload: { data } });

@@ -35,6 +35,8 @@ app.model(require('./models/machines'));
 
 app.model(require('./models/franchiseeUsers'));
 
+app.model(require('./models/unallocatedDevices'));
+
 // 4. Router
 app.router(require('./router'));
 
