@@ -43,7 +43,7 @@ export const INDEX_MACHINE_CARD_INFO = {
       id: 6,
       itemTitle: '设备分配',
       itemImg: 'http://res.cloudinary.com/xnchen/image/upload/v1497209107/machine1_plw8e4.png',
-      url: '#',
+      url: '/admin/device/allocate/devices',
     },
     {
       id: 7,

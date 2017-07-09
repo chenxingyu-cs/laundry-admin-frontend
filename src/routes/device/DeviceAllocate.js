@@ -5,12 +5,14 @@ import MainLayout from '../../components/MainLayout/MainLayout';
 import DeviceAllocateDevicesPanel from '../../components/Device/DeviceAllocateDevicesPanel';
 
 function DeviceAllocate({ deviceList, dispatch }) {
-  dispatch({
-    type: 'unallocatedDevices/fetch',
-    payload: {
-      page: 1,
-    },
-  });
+  if (deviceList.length === 0) {
+    dispatch({
+      type: 'unallocatedDevices/fetch',
+      payload: {
+        page: 1,
+      },
+    });
+  }
 
   return (
     <MainLayout mainTitle="设备启用">
