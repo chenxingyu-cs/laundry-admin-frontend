@@ -28,5 +28,7 @@ export function edit(id, name, phone, desc = '') {
 }
 
 export function remove(id) {
-  return request(`${HOST_URL}/franchisee/delete?id=${id}`);
+  return request(`${HOST_URL}/station/${id}`, {
+    method: 'DELETE',
+  });
 }

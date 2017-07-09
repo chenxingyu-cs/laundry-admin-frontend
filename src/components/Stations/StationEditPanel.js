@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem, Button, Picker, Toast, Checkbox, Accordion, WhiteSpace } from 'antd-mobile';
+import { List, InputItem, Button, Picker, Toast, Checkbox, Accordion, WhiteSpace, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { fromIdList } from '../../utils/pickerHelper';
 import styles from './StationEditPanel.css';
@@ -35,6 +35,15 @@ class BasicInput extends React.Component {
     });
   }
 
+  onDelete = () => {
+    this.props.dispatch({
+      type: 'stations/remove',
+      payload: {
+        id: this.props.stationInfo.id,
+      },
+    });
+  }
+
   formatTime = (timeData) => {
     const formatted = `${timeData.slice(0, 2)}:${timeData.slice(2)}`;
     return formatted;
@@ -48,6 +57,8 @@ class BasicInput extends React.Component {
   }
 
   selectUsers = (value) => {
+    console.log('state', this.state.selectedUsers);
+
     if (this.state.selectedUsers.includes(value)) {
       this.setState({ selectedUsers: this.state.selectedUsers.filter(v => v !== value) });
     } else {
@@ -56,6 +67,8 @@ class BasicInput extends React.Component {
   }
 
   selectMachines = (value) => {
+    console.log('state', this.state.selectedMachines);
+
     if (this.state.selectedMachines.includes(value)) {
       this.setState({ selectedMachines: this.state.selectedMachines.filter(v => v !== value) });
     } else {
@@ -73,7 +86,8 @@ class BasicInput extends React.Component {
 
   render() {
     const { getFieldProps, getFieldError } = this.props.form;
-    const userData = fromIdList(this.props.userList);
+    const operatorsData = fromIdList(this.props.operators);
+    const observersData = fromIdList(this.props.observers);
     return (
       <div className={styles.normal}>
         <form>
@@ -169,7 +183,7 @@ class BasicInput extends React.Component {
 
             <Picker
               {...getFieldProps('operator')}
-              data={userData}
+              data={observersData}
               cols={1}
             >
               <List.Item arrow="horizontal">维修员</List.Item>
@@ -177,7 +191,7 @@ class BasicInput extends React.Component {
 
             <Picker
               {...getFieldProps('observer')}
-              data={userData}
+              data={operatorsData}
               cols={1}
             >
               <List.Item arrow="horizontal">观察员</List.Item>
@@ -189,7 +203,7 @@ class BasicInput extends React.Component {
         <Accordion>
           <Accordion.Panel header="选择管理员">
             <List>
-              {this.props.userList.map(user => (
+              {this.props.administrators.map(user => (
                 <CheckboxItem key={user.id} onChange={() => this.selectUsers(user.id)}>
                   {user.name}
                 </CheckboxItem>
@@ -211,13 +225,25 @@ class BasicInput extends React.Component {
         </Accordion>
 
         <WhiteSpace />
-        <Button
-          type="primary"
-          onClick={this.onSubmit}
-          disabled={this.state.selectedUsers.length === 0}
-        >
-          提交
-        </Button>
+        <Flex>
+          <Flex.Item>
+            <Button
+              type="primary"
+              onClick={this.onSubmit}
+              disabled={this.state.selectedUsers.length === 0}
+            >
+              提交
+            </Button>
+          </Flex.Item>
+          <Flex.Item>
+            <Button
+              type="primary"
+              onClick={this.onDelete}
+            >
+              删除
+            </Button>
+          </Flex.Item>
+        </Flex>
       </div>
     );
   }

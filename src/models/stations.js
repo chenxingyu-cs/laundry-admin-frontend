@@ -31,6 +31,16 @@ export default {
         Toast.fail('新建失败，请重试！', 1);
       }
     },
+
+    *remove({ payload: { id } }, { call }) {
+      const { error } = yield call(stationService.remove, id);
+      if (error) {
+        Toast.fail('删除失败，请重试！', 1);
+      } else {
+        Toast.success('删除成功！', 1);
+        browserHistory.push('/admin/stations/list');
+      }
+    },
   },
   subscriptions: {},
 };

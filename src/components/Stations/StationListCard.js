@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'dva/router';
 import { Accordion } from 'antd-mobile';
 import styles from './StationListCard.css';
 import StationListMachineCard from './StationListMachineCard';
@@ -15,7 +16,14 @@ function StationListCard({ stationList }) {
           {stationList.map(station => (
             <Accordion.Panel
               key={station.id}
-              header={station.name}
+              header={(
+                <div>
+                  {station.name}
+                  <Link to={`/admin/stations/edit/${station.id}`} className={styles.editLink}>
+                    编辑
+                  </Link>
+                </div>
+              )}
             >
               <StationListMachineCard machineList={station.machines} />
             </Accordion.Panel>

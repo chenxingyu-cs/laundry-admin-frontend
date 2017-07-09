@@ -4,17 +4,45 @@ import styles from './StationEdit.css';
 import MainLayout from '../../components/MainLayout/MainLayout';
 import StationEditPanel from '../../components/Stations/StationEditPanel';
 
-function StationEdit({ dispatch, userList, machineList, stationList, params }) {
-  if (userList.length === 0) {
+function StationEdit({ dispatch, machineList, operators,
+  administrators, observers, params, stationList }) {
+  // if (userList.length === 0) {
+  //   dispatch({
+  //     type: 'adminUsers/fetch',
+  //     payload: {
+  //       page: 1,
+  //     },
+  //   });
+  // }
+
+  // if (machineList.length === 0) {
+  //   dispatch({
+  //     type: 'machines/fetch',
+  //     payload: {
+  //       page: 1,
+  //     },
+  //   });
+  // }
+
+  // let stationInfo = {};
+  // if (stationList.length === 0) {
+  //   dispatch({
+  //     type: 'stations/fetch',
+  //     payload: {
+  //       page: 1,
+  //     },
+  //   });
+  // } else {
+  //   stationInfo = stationList.find(station => station.id === parseInt(params.stationId, 10));
+  // }
+  if (operators.length === 0 || administrators.length === 0 || observers.length === 0) {
     dispatch({
-      type: 'adminUsers/fetch',
+      type: 'franchiseeUsers/fetch',
       payload: {
         page: 1,
       },
     });
-  }
 
-  if (machineList.length === 0) {
     dispatch({
       type: 'machines/fetch',
       payload: {
@@ -23,18 +51,7 @@ function StationEdit({ dispatch, userList, machineList, stationList, params }) {
     });
   }
 
-  let stationInfo = {};
-  if (stationList.length === 0) {
-    dispatch({
-      type: 'stations/fetch',
-      payload: {
-        page: 1,
-      },
-    });
-  } else {
-    stationInfo = stationList.find(station => station.id === parseInt(params.stationId, 10));
-    console.log('station', stationInfo);
-  }
+  const stationInfo = stationList.find(station => station.id === parseInt(params.stationId, 10));
 
   return (
     <MainLayout mainTitle="编辑洗衣点">
@@ -42,7 +59,9 @@ function StationEdit({ dispatch, userList, machineList, stationList, params }) {
         <StationEditPanel
           dispatch={dispatch}
           machineList={machineList}
-          userList={userList}
+          operators={operators}
+          administrators={administrators}
+          observers={observers}
           stationInfo={stationInfo}
         />
       </div>
@@ -51,10 +70,13 @@ function StationEdit({ dispatch, userList, machineList, stationList, params }) {
 }
 
 function mapStateToProps(state) {
-  const { list: userList } = state.adminUsers;
-  const { list: machineList } = state.machines;
+  // const { list: userList } = state.adminUsers;
+  // const { list: machineList } = state.machines;
   const { list: stationList } = state.stations;
-  return { userList, machineList, stationList };
+  // return { userList, machineList, stationList };
+  const { list: machineList } = state.machines;
+  const { operators, administrators, observers } = state.franchiseeUsers;
+  return { machineList, operators, administrators, observers, stationList };
 }
 
 export default connect(mapStateToProps)(StationEdit);
