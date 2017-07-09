@@ -53,12 +53,14 @@ function StationEdit({ dispatch, machineList, operators,
 
   const stationInfo = stationList.find(station => station.id === parseInt(params.stationId, 10));
 
+  const totalMachineList = [...machineList, ...stationInfo.machines];
+
   return (
     <MainLayout mainTitle="编辑洗衣点">
       <div className={styles.normal}>
         <StationEditPanel
           dispatch={dispatch}
-          machineList={machineList}
+          machineList={totalMachineList}
           operators={operators}
           administrators={administrators}
           observers={observers}

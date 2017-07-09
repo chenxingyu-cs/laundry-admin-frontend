@@ -32,6 +32,16 @@ export default {
       }
     },
 
+    *edit({ payload: { id, values } }, { call }) {
+      const { error } = yield call(stationService.edit, id, values);
+      if (error) {
+        Toast.fail('修改失败，请重试！', 1);
+      } else {
+        Toast.success('修改成功！', 1);
+        browserHistory.push('/admin/stations/list');
+      }
+    },
+
     *remove({ payload: { id } }, { call }) {
       const { error } = yield call(stationService.remove, id);
       if (error) {

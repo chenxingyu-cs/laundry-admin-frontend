@@ -8,8 +8,8 @@ const CheckboxItem = Checkbox.CheckboxItem;
 
 class BasicInput extends React.Component {
   state = {
-    selectedMachines: [],
-    selectedUsers: [],
+    selectedMachines: this.props.stationInfo.machines.map(machine => machine.boxId),
+    selectedUsers: this.props.stationInfo.administrators.map(admin => admin.id),
   }
 
   onSubmit = () => {
@@ -26,8 +26,9 @@ class BasicInput extends React.Component {
         const values = { ...formValues, observer, operator, closeTime, openTime, machines, administrators }; // eslint-disable-line
         console.log('values', values);
         this.props.dispatch({
-          type: 'stations/create',
+          type: 'stations/edit',
           payload: {
+            id: this.props.stationInfo.id,
             values,
           },
         });
@@ -42,6 +43,7 @@ class BasicInput extends React.Component {
         id: this.props.stationInfo.id,
       },
     });
+    // console.log(this.props.stationInfo);
   }
 
   formatTime = (timeData) => {
@@ -182,7 +184,10 @@ class BasicInput extends React.Component {
             </InputItem>
 
             <Picker
-              {...getFieldProps('operator')}
+              {...getFieldProps('operator', {
+                initialValue: [this.props.stationInfo.operator
+                  && this.props.stationInfo.operator.id],
+              })}
               data={observersData}
               cols={1}
             >
@@ -190,7 +195,10 @@ class BasicInput extends React.Component {
             </Picker>
 
             <Picker
-              {...getFieldProps('observer')}
+              {...getFieldProps('observer', {
+                initialValue: [this.props.stationInfo.observer
+                  && this.props.stationInfo.observer.id],
+              })}
               data={operatorsData}
               cols={1}
             >
@@ -204,7 +212,11 @@ class BasicInput extends React.Component {
           <Accordion.Panel header="选择管理员">
             <List>
               {this.props.administrators.map(user => (
-                <CheckboxItem key={user.id} onChange={() => this.selectUsers(user.id)}>
+                <CheckboxItem
+                  key={user.id}
+                  onChange={() => this.selectUsers(user.id)}
+                  checked={this.state.selectedUsers.includes(user.id)}
+                >
                   {user.name}
                 </CheckboxItem>
               ))}
@@ -216,6 +228,7 @@ class BasicInput extends React.Component {
                 <CheckboxItem
                   key={machine.boxId}
                   onChange={() => this.selectMachines(machine.boxId)}
+                  checked={this.state.selectedMachines.includes(machine.boxId)}
                 >
                   {machine.boxId}
                 </CheckboxItem>

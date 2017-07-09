@@ -15,15 +15,13 @@ export function create(values) {
   });
 }
 
-export function edit(id, name, phone, desc = '') {
-  const formData = new FormData();     // eslint-disable-line
-  formData.append('id', id);
-  formData.append('name', name);
-  formData.append('phone', phone);
-  formData.append('desc', desc);
-  return request(`${HOST_URL}/franchisee/update`, {
-    method: 'POST',
-    body: formData,
+export function edit(id, values) {
+  return request(`${HOST_URL}/station/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
   });
 }
 
