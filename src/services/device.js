@@ -34,6 +34,19 @@ export function testBox(boxId, testData, fee1, fee2, fee3, fee4) {
   });
 }
 
+export function updateBox(boxId, fee1, fee2, fee3, fee4) {
+  const formData = new FormData();     // eslint-disable-line
+  formData.append('boxId', boxId);
+  formData.append('fee1', fee1);
+  formData.append('fee2', fee2);
+  formData.append('fee3', fee3);
+  formData.append('fee4', fee4);
+  return request(`${HOST_URL}/device/update`, {
+    method: 'POST',
+    body: formData,
+  });
+}
+
 export function bindBox(boxId, testData, fee1, fee2, fee3, fee4) {
   const formData = new FormData();     // eslint-disable-line
   formData.append('boxId', boxId);

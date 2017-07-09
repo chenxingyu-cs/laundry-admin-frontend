@@ -46,19 +46,19 @@ class DeviceEditPanelExample extends React.Component {
         data: this.dryer,
         grid: [
           {
-            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B210_3x_x6zgly.png',
+            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B230_3x_piv7ja.png',
             text: `价格 ${this.state.price1}元`,
           },
           {
-            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B230_3x_piv7ja.png',
+            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B240_3x_qefaif.png',
             text: `价格 ${this.state.price2}元`,
           },
           {
-            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B240_3x_qefaif.png',
+            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B250_3x_byt7aa.png',
             text: `价格 ${this.state.price3}元`,
           },
           {
-            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B250_3x_byt7aa.png',
+            icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B210_3x_x6zgly.png',
             text: `价格 ${this.state.price4}元`,
           },
         ],
@@ -205,19 +205,19 @@ class DeviceEditPanelExample extends React.Component {
                 this.setState({
                   grid: [
                     {
-                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B210_3x_x6zgly.png',
+                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B230_3x_piv7ja.png',
                       text: `价格 ${this.state.price1}元`,
                     },
                     {
-                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B230_3x_piv7ja.png',
+                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B240_3x_qefaif.png',
                       text: `价格 ${this.state.price2}元`,
                     },
                     {
-                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B240_3x_qefaif.png',
+                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B250_3x_byt7aa.png',
                       text: `价格 ${this.state.price3}元`,
                     },
                     {
-                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B250_3x_byt7aa.png',
+                      icon: 'http://res.cloudinary.com/xnchen/image/upload/v1498370381/%E7%83%98%E5%B9%B210_3x_x6zgly.png',
                       text: `价格 ${this.state.price4}元`,
                     },
                   ],

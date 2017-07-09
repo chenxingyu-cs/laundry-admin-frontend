@@ -19,7 +19,7 @@ function DeviceEdit({ boxInfo, test, dispatch }) {
     return (
       <MainLayout mainTitle="设备启用" rightTitle="解绑" rightUrl={uninstallUrl}>
         <div className={styles.normal}>
-          <DeviceDetailPanel boxInfo={boxInfo} />
+          <DeviceDetailPanel boxInfo={boxInfo} test={test} dispatch={dispatch} />
         </div>
       </MainLayout>
     );

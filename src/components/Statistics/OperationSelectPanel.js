@@ -74,6 +74,7 @@ class OperationSelectPanelExample extends React.Component {
           <Picker
             {...getFieldProps('franchiseeId')}
             data={franchisees}
+            cols={1}
             title="加盟商"
             onOk={this.onFranchiseeChange}
           >
@@ -82,6 +83,7 @@ class OperationSelectPanelExample extends React.Component {
           <Picker
             {...getFieldProps('stationId')}
             data={stations}
+            cols={1}
             title="门店"
           >
             <List.Item arrow="horizontal">请选择门店</List.Item>

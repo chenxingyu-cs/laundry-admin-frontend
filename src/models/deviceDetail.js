@@ -16,10 +16,12 @@ export default {
       return { ...state, ...result };
     },
     enable(state) {
-      const { boxInfo } = state;
-      let { test } = state;
-      test = false;
-      return { ...state, boxInfo, test };
+      const test = false;
+      return { ...state, test };
+    },
+    disable(state) {
+      const test = true;
+      return { ...state, test };
     },
   },
   effects: {
@@ -45,7 +47,17 @@ export default {
         }
       }
     },
-    *bind({ payload: { boxId, testData, fee1, fee2, fee3, fee4 } }, { call }) {
+    *update({ payload: { boxId, fee1, fee2, fee3, fee4 } }, { call, put }) {
+      const { data } = yield call(deviceService.updateBox, boxId, fee1, fee2, fee3, fee4);
+      if (!data.responseEntity || data.responseEntity === false) {
+        Toast.fail('更新失败');
+      } else {
+        Toast.success('更新成功');
+        yield put({ type: 'disable' });
+        browserHistory.push('/admin/device/list');
+      }
+    },
+    *bind({ payload: { boxId, testData, fee1, fee2, fee3, fee4 } }, { call, put }) {
       if (!(testData.deviceId && testData.qrcode && testData.model &&
         testData.type && fee1 && fee2 && fee3 && fee4)) {
         Toast.fail('请填写所有参数');
@@ -55,6 +67,7 @@ export default {
           Toast.fail('绑定失败');
         } else {
           Toast.success('绑定成功');
+          yield put({ type: 'disable' });
           browserHistory.push('/admin/device/list');
         }
       }

@@ -3,6 +3,7 @@ import { List, WhiteSpace } from 'antd-mobile';
 import styles from './DeviceStatusDetailPanel.css';
 
 function DeviceStatusDetailPanel({ boxInfo }) {
+  const isDisplay = '';
   return (
     <div className={styles.normal}>
       <List>
@@ -16,6 +17,7 @@ function DeviceStatusDetailPanel({ boxInfo }) {
       <WhiteSpace size="sm" />
       <List>
         <List.Item>实时状态 <span className={styles.id}>{ boxInfo.status }</span></List.Item>
+        <List.Item style={{ display: isDisplay }}>故障原因 <span className={styles.id}>{ boxInfo.status }</span></List.Item>
         <List.Item>支付方式 <span className={styles.id}>{ boxInfo.paidFunction }</span></List.Item>
         <List.Item>
           本周销售额
