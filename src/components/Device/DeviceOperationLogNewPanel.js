@@ -58,7 +58,9 @@ function BasicInput({ form, dispatch, boxId }) {
           </DatePicker>
         </List>
 
-        <List renderHeader={() => '故障原因'}>
+        <WhiteSpace />
+        <List>
+          <List.Item>故障原因</List.Item>
           <TextareaItem
             {...getFieldProps('issue', {
               rules: [
@@ -70,7 +72,9 @@ function BasicInput({ form, dispatch, boxId }) {
           />
         </List>
 
-        <List renderHeader={() => '维修方法'}>
+        <WhiteSpace />
+        <List>
+          <List.Item>维修方法</List.Item>
           <TextareaItem
             {...getFieldProps('method', {
               rules: [

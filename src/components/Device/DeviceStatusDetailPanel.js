@@ -4,8 +4,6 @@ import { List, WhiteSpace, Button } from 'antd-mobile';
 import styles from './DeviceStatusDetailPanel.css';
 
 function DeviceStatusDetailPanel({ boxInfo }) {
-  const isDisplay = '';
-
   function createOperationLog() {
     browserHistory.push({
       pathname: '/admin/device/operationLog/new',
@@ -16,6 +14,22 @@ function DeviceStatusDetailPanel({ boxInfo }) {
   function listOperationLog() {
     browserHistory.push(`/admin/device/operationLog/list/${boxInfo.boxId}`);
   }
+
+  function formatDateFromTimestamp(timestamp) {
+    const timeDate = new Date(timestamp);
+    const yearStr = timeDate.getFullYear();
+    const monthValue = timeDate.getMonth() + 1;
+    const dayValue = timeDate.getDate() + 1;
+    const monthStr = dayValue < 10 ? `0${monthValue}` : monthValue;
+    const dayStr = dayValue < 10 ? `0${dayValue}` : dayValue;
+    return `${yearStr}-${monthStr}-${dayStr}`;
+  }
+
+  function toOperationLogDetail(logId) {
+    browserHistory.push(`admin/device/operationLog/info/${logId}`);
+  }
+
+  const operationLogsToSee = boxInfo.operationLogs ? boxInfo.operationLogs.slice(0, 2) : [];
 
   return (
     <div className={styles.normal}>
@@ -30,8 +44,6 @@ function DeviceStatusDetailPanel({ boxInfo }) {
       <WhiteSpace size="sm" />
       <List>
         <List.Item>实时状态 <span className={styles.id}>{ boxInfo.status }</span></List.Item>
-        <List.Item style={{ display: isDisplay }}>故障原因 <span className={styles.id}>{ boxInfo.status }</span>
-        </List.Item>
         <List.Item>支付方式 <span className={styles.id}>{ boxInfo.paidFunction }</span></List.Item>
         <List.Item>
           本周销售额
@@ -43,7 +55,27 @@ function DeviceStatusDetailPanel({ boxInfo }) {
         </List.Item>
       </List>
       <WhiteSpace />
-      <Button type="primary" onClick={listOperationLog}>查看维修日志</Button>
+      <List>
+        <List.Item>
+          <span className={styles.operationTitle}>
+            维修日志
+          </span>
+        </List.Item>
+        {operationLogsToSee.map(operatonLog => (
+          <List.Item
+            key={operatonLog.id}
+            extra={formatDateFromTimestamp(operatonLog.errorDate)}
+            onClick={() => toOperationLogDetail(operatonLog.id)}
+          >
+            {operatonLog.issue}
+          </List.Item>
+        ))}
+        <List.Item onClick={listOperationLog}>
+          <span className={styles.operationTitle}>
+            查看更多
+          </span>
+        </List.Item>
+      </List>
       <WhiteSpace />
       <Button type="primary" onClick={createOperationLog}>新增维修日志</Button>
     </div>

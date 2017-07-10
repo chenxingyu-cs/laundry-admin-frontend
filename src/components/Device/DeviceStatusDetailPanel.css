@@ -6,3 +6,8 @@
   position: absolute;
   right: 5%;
 }
+
+.operationTitle {
+  position: relative;
+  left: 42%;
+}
