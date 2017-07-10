@@ -38,7 +38,7 @@ export default {
     "@primary-button-fill-tap": "#f45675",
     "fill-tap": "#f45675",
     "@border-radius-base": "2px",
-    "@font-size-base": "32px",
+    "@font-size-base": "28px",
     "@font-size-heading": "28px",
     "@font-size-caption": "28px",
     "@font-size-subhead": "24px",

@@ -1,9 +1,22 @@
 import React from 'react';
-import { List, WhiteSpace } from 'antd-mobile';
+import { browserHistory } from 'dva/router';
+import { List, WhiteSpace, Button } from 'antd-mobile';
 import styles from './DeviceStatusDetailPanel.css';
 
 function DeviceStatusDetailPanel({ boxInfo }) {
   const isDisplay = '';
+
+  function createOperationLog() {
+    browserHistory.push({
+      pathname: '/admin/device/operationLog/new',
+      state: { boxId: boxInfo.boxId },
+    });
+  }
+
+  function listOperationLog() {
+    browserHistory.push(`/admin/device/operationLog/list/${boxInfo.boxId}`);
+  }
+
   return (
     <div className={styles.normal}>
       <List>
@@ -17,7 +30,8 @@ function DeviceStatusDetailPanel({ boxInfo }) {
       <WhiteSpace size="sm" />
       <List>
         <List.Item>实时状态 <span className={styles.id}>{ boxInfo.status }</span></List.Item>
-        <List.Item style={{ display: isDisplay }}>故障原因 <span className={styles.id}>{ boxInfo.status }</span></List.Item>
+        <List.Item style={{ display: isDisplay }}>故障原因 <span className={styles.id}>{ boxInfo.status }</span>
+        </List.Item>
         <List.Item>支付方式 <span className={styles.id}>{ boxInfo.paidFunction }</span></List.Item>
         <List.Item>
           本周销售额
@@ -28,6 +42,10 @@ function DeviceStatusDetailPanel({ boxInfo }) {
           <span className={styles.id}>{ boxInfo.currentWeekAvgWorkTime }</span>
         </List.Item>
       </List>
+      <WhiteSpace />
+      <Button type="primary" onClick={listOperationLog}>查看维修日志</Button>
+      <WhiteSpace />
+      <Button type="primary" onClick={createOperationLog}>新增维修日志</Button>
     </div>
   );
 }

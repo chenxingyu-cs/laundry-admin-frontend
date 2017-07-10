@@ -81,6 +81,16 @@ export default {
         browserHistory.push('/admin/device/list');
       }
     },
+
+    *createOperationLog({ payload: { values } }, { call }) {
+      const { error } = yield call(deviceService.createOperationLog, values);
+      if (error) {
+        Toast.fail('新建失败，请重试！', 1);
+      } else {
+        Toast.success('新建成功！', 1);
+        browserHistory.push(`/admin/device/operationLog/list/${values.boxId}`);
+      }
+    },
   },
   subscriptions: {
     setup({ dispatch, history }) {

@@ -27,7 +27,8 @@ import DeviceDetail from './routes/device/DeviceStatusDetail.js';
 import DeviceAllocate from './routes/device/DeviceAllocate.js';
 import DeviceApp from './routes/device/DeviceApp.js';
 import DeviceAllocateFranchisee from './routes/device/DeviceAllocateFranchisee.js';
-
+import DeviceOperationLogList from './routes/device/DeviceOperationLogList.js';
+import DeviceOperationLogNew from './routes/device/DeviceOperationLogNew.js';
 
 import StationApp from './routes/stations/StationApp.js';
 import StationList from './routes/stations/StationList.js';
@@ -78,6 +79,8 @@ function RouterConfig({ history }) {
           <Route path="detail/:deviceId" component={DeviceEdit} />
           <Route path="unbind/:deviceId" component={DeviceEdit} />
           <Route path="statusDetail/:deviceId" component={DeviceDetail} />
+          <Route path="operationLog/new" component={DeviceOperationLogNew} />
+          <Route path="operationLog/list/:deviceId" component={DeviceOperationLogList} />
         </Route>
       </Route>
     </Router>

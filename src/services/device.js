@@ -81,3 +81,8 @@ export function allocateDevices(values) {
 export function fetchUnallocated() {
   return request(`${HOST_URL}/device/unassigned/all`);
 }
+
+export function createOperationLog(values) {
+  const { errorDate, repairDate, issue, method, boxId } = values;
+  return request(`${HOST_URL}/device/operationLog/add?boxId=${boxId}&errorDate=${errorDate}&repairDate=${repairDate}&issue=${issue}&method=${method}`);
+}
