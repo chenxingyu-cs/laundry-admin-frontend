@@ -4,9 +4,10 @@ import styles from './DeviceAllocate.css';
 import MainLayout from '../../components/MainLayout/MainLayout';
 import DeviceAllocateDevicesPanel from '../../components/Device/DeviceAllocateDevicesPanel';
 
-function DeviceAllocate({ deviceList, dispatch }) {
-  if (deviceList.length === 0) {
-    dispatch({
+
+class DeviceAllocate extends React.Component {
+  componentWillMount() {
+    this.props.dispatch({
       type: 'unallocatedDevices/fetch',
       payload: {
         page: 1,
@@ -14,13 +15,15 @@ function DeviceAllocate({ deviceList, dispatch }) {
     });
   }
 
-  return (
-    <MainLayout mainTitle="设备启用">
-      <div className={styles.normal}>
-        <DeviceAllocateDevicesPanel devices={deviceList} />
-      </div>
-    </MainLayout>
-  );
+  render() {
+    return (
+      <MainLayout mainTitle="设备分配">
+        <div className={styles.normal}>
+          <DeviceAllocateDevicesPanel devices={this.props.deviceList} />
+        </div>
+      </MainLayout>
+    );
+  }
 }
 
 function mapStateToProps(state) {
